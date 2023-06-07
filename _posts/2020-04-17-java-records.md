@@ -8,7 +8,7 @@ tags: java jdk jdk14 java14 records immutability
 image: /public/images/java-records.png
 ---
 
-![java-records](https://carloschac.in/public/images/java-records.png)
+![java-records](https://carloschac.in/public/images/java-records.png){:loading="lazy"}
 
 **Record** is a new kind of type declaration in the Java language. Like an _enum_, a _record_ is a restricted form of class. It declares its representation and commits to an API that matches that representation. Records give up a freedom that classes usually enjoy: the ability to decouple API from representation. In return, records gain a significant degree of concision.
 
@@ -50,7 +50,7 @@ public record Person(
 ### 💻 Compile it with `javac`
 
 ```bash
-$ javac --enable-preview -source 14 Person.java  
+$ javac --enable-preview -source 14 Person.java
 ```
 
 ### 💻 Compile it with `maven`
@@ -156,8 +156,8 @@ void immutability() {
 
 There are two ways of guaranteeing immutability when using records with mutable data types in their signature or when the data type is an interface, and we are not sure about the implementation, i.e., `java.util.Date` or `java.util.List`
 
-1) Create a safe copy of the data type in the record's constructor.
-2) Pass only immutable objects when creating the records.
+1. Create a safe copy of the data type in the record's constructor.
+2. Pass only immutable objects when creating the records.
 
 ## 🔆 Conclusions
 

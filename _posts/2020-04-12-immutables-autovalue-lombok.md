@@ -8,7 +8,7 @@ tags: java best-practices immutability
 image: /public/images/OfficeDesk.png
 ---
 
-![OfficeDesk](https://carloschac.in/public/images/OfficeDesk.png)
+![OfficeDesk](https://carloschac.in/public/images/OfficeDesk.png){:loading="lazy"}
 
 In this article, we are going to compare some of the features of the [Immutables.org](http://immutables.github.io/) library, [Google AutoValue](https://github.com/google/auto) and [Project Lombok](https://projectlombok.org/):
 
@@ -24,7 +24,7 @@ The three libraries are based on an annotation processor to generate/modify code
 - `equals`, `hashCode` and `toString` methods
 - other utilities
 
-**NOTE:** `Immutables` and `AutoValue` generate new classes with the processor, and `Lombok` modifies the *bytecode* of the original class.
+**NOTE:** `Immutables` and `AutoValue` generate new classes with the processor, and `Lombok` modifies the _bytecode_ of the original class.
 
 <!-- more -->
 
@@ -35,7 +35,7 @@ The three libraries are based on an annotation processor to generate/modify code
 > [AutoValue](https://github.com/google/auto) provides an easier way to create immutable value classes, with a lot less code and less room for error, while not restricting your freedom to code almost any aspect of your class exactly the way you want it.
 
 > [Project Lombok](https://projectlombok.org/) is a java library that automatically plugs into your editor and build tools, spicing up your java.
-Never write another getter or equals method again, with one annotation your class has a fully-featured builder, Automate your logging variables, and much more.
+> Never write another getter or equals method again, with one annotation your class has a fully-featured builder, Automate your logging variables, and much more.
 
 ## 📇 The Model
 
@@ -171,6 +171,7 @@ model1 == model2 // TRUE
 ```
 
 After mutating one of the lists, the comparison of the objects should be the same
+
 ```java
 list1.add("AnotherValue")
 
@@ -290,14 +291,14 @@ void immutability() {
 ## 📈 Results
 
 |                                | AutoValue | Lombok | Immutables |
-|:-------------------------------|:---------:|:------:|:----------:|
+| :----------------------------- | :-------: | :----: | :--------: |
 | Line of Code to write/maintain |    28     |   14   |     15     |
-| Builder (by default)           |    🔴     |   🔴   |     ✅      |
-| Required IDE Plugin            |     ✅     |   🔴   |     ✅      |
-| Immutability                   |    🔴     |   🔴   |     ✅      |
-| Helper for Optional            |    🔴     |   🔴   |     ✅      |
-| Helper for Collections         |    🔴     |   🔴   |     ✅      |
-| Helper for Copying             |    🔴     |   🔴   |     ✅      |
+| Builder (by default)           |    🔴     |   🔴   |     ✅     |
+| Required IDE Plugin            |    ✅     |   🔴   |     ✅     |
+| Immutability                   |    🔴     |   🔴   |     ✅     |
+| Helper for Optional            |    🔴     |   🔴   |     ✅     |
+| Helper for Collections         |    🔴     |   🔴   |     ✅     |
+| Helper for Copying             |    🔴     |   🔴   |     ✅     |
 
 ## 🔆 Conclusions
 

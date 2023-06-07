@@ -8,9 +8,9 @@ tags: java best-practices immutability
 image: /public/images/HomeOffice.png
 ---
 
-![HomeOffice](https://carloschac.in/public/images/HomeOffice.png)
+![HomeOffice](https://carloschac.in/public/images/HomeOffice.png){:loading="lazy"}
 
-In [Effective Java](http://www.amazon.com/exec/obidos/ASIN/0134685997/ref=nosim/javapractices-20), *Joshua Bloch* makes the following recommendation:
+In [Effective Java](http://www.amazon.com/exec/obidos/ASIN/0134685997/ref=nosim/javapractices-20), _Joshua Bloch_ makes the following recommendation:
 
 > Classes should be immutable unless there's a very good reason to make them mutable... If a class cannot be made immutable, limit its mutability as much as possible.
 
@@ -24,12 +24,11 @@ In [Effective Java](http://www.amazon.com/exec/obidos/ASIN/0134685997/ref=nosim/
 > - Immutable objects are naturally thread-safe and can therefore be safely shared among threads
 >   - No excessive copying
 >   - No excessive synchronization
->- Object definitions are pleasant to write and read
+> - Object definitions are pleasant to write and read
 >   - No boilerplate setter and getters
 >   - No ugly IDE-generated `hashCode`, `equals` and `toString` methods that end up being stored in source control. [reference](http://immutables.github.io/immutable.html)
 
 <!-- more -->
-
 
 ### 🔧 Let's convert a mutable object into an immutable one (by hand ✋):
 
@@ -113,8 +112,9 @@ public class OldModel {
 To convert that to an immutable object, we have to:
 
 #### 🔴 The class can not be overridden:
-  - 🔐 Make the class final.
-  - 🔐 Or make the constructor final and use static factory methods.
+
+- 🔐 Make the class final.
+- 🔐 Or make the constructor final and use static factory methods.
 
 ```diff
 -public class OldModel {
@@ -299,14 +299,13 @@ NewModel{fieldA=A, fieldB=Sat Apr 11 15:53:26 PDT 2020, fieldC=1, fieldD=[a, b, 
 #### 📐 A few comparisons
 
 |                            | OldModel | NewModel |
-|:---------------------------|:--------:|:--------:|
+| :------------------------- | :------: | :------: |
 | Lines of code to maintain  |    69    |    16    |
 | Lines of code to generated |    0     |   377    |
-| Defensive copy of fields   |    ⁉️     |    ✅     |
-| Fluent API for copy        |    ❌     |    ✅     |
-| Builder                    |    ❌     |    ✅     |
-| Nullability Checks         |    ❌     |    ✅     |
-
+| Defensive copy of fields   |    ⁉️    |    ✅    |
+| Fluent API for copy        |    ❌    |    ✅    |
+| Builder                    |    ❌    |    ✅    |
+| Nullability Checks         |    ❌    |    ✅    |
 
 #### 🎉 The generated code
 
@@ -694,4 +693,5 @@ public final class ImmutableNewModel implements NewModel {
 ```
 
 ## Conclusion
+
 The Java language can be even more verbose if we don't use the proper tools for the job, and for years, code generation has been a useful solution to make our life easier in the Java ecosystem. Reaching a good level of immutability in our codebases requires much effort when doing it manually, and it's susceptible to inadvertent mistakes, to avoid that, and make our codebase also smaller (less code fewer bugs) we can should the [Immutables.org](http://immutables.github.io/) library.

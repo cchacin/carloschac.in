@@ -9,7 +9,7 @@ tags: java maven github actions github-actions build
 image: /public/images/maven-github-actions/maven-build.png
 ---
 
-![github-actions](/public/images/maven-github-actions/github-actions.png)
+![github-actions](/public/images/maven-github-actions/github-actions.png){:loading="lazy"}
 
 > [GitHub Actions](https://github.com/features/actions) makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.
 
@@ -20,6 +20,7 @@ $ mkdir -p .github/workflows
 ```
 
 ## Create the yaml file
+
 ```bash
 $ touch .github/workflows/maven.yml
 ```
@@ -64,4 +65,4 @@ Go to the actions tab for your repository over github.com:
 
 https://github.com/${USER}/${PROJECT}/actions/workflows/maven-build.yml
 
-![maven-build](/public/images/maven-github-actions/maven-build.png)
+![maven-build](/public/images/maven-github-actions/maven-build.png){:loading="lazy"}

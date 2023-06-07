@@ -8,7 +8,7 @@ tags: java dependency-injection di best-practices
 image: /public/images/dependency-injection-in-java/Collaborators.png
 ---
 
-![Collaborators](https://carloschac.in/public/images/dependency-injection-in-java/Collaborators.png)
+![Collaborators](https://carloschac.in/public/images/dependency-injection-in-java/Collaborators.png){:loading="lazy"}
 
 > Read the English Version [here](https://carloschac.in/2019/11/14/dependency-injection-in-java/)
 
@@ -22,7 +22,7 @@ En este artículo, vamos a describir el concepto de Inyección de dependencias e
 
 Cuando una clase `ClassA` usa cualquier método de otra clase` ClassB`, podemos decir que `ClassB` es una dependencia de` ClassA`.
 
-![1](https://carloschac.in/public/images/dependency-injection-in-java/1.png)
+![1](https://carloschac.in/public/images/dependency-injection-in-java/1.png){:loading="lazy"}
 
 ```java
 class ClassA {
@@ -37,7 +37,7 @@ class ClassA {
 
 En este ejemplo, `ClassA` está calculando el 10% del valor, y calculando ese valor, está reutilizando la funcionalidad expuesta por` ClassB`.
 
-![2](https://carloschac.in/public/images/dependency-injection-in-java/2.png)
+![2](https://carloschac.in/public/images/dependency-injection-in-java/2.png){:loading="lazy"}
 
 Y se puede usar así:
 
@@ -55,9 +55,9 @@ Ahora, hay un gran problema con este enfoque:
 
 > `ClassA` **está estrechamente acoplada con** `ClassB`
 
-Si necesitamos cambiar / reemplazar `ClassB` con` ClassC` porque `ClassC` tiene una versión optimizada del método` Calculate () `, necesitamos recompilar` ClassA` porque no tenemos una manera de cambiar esa dependencia , está codificado dentro de `ClassA`.
+Si necesitamos cambiar / reemplazar `ClassB` con` ClassC` porque `ClassC` tiene una versión optimizada del método`Calculate ()`, necesitamos recompilar` ClassA` porque no tenemos una manera de cambiar esa dependencia , está codificado dentro de `ClassA`.
 
-![Collision](https://carloschac.in/public/images/dependency-injection-in-java/Collision.png)
+![Collision](https://carloschac.in/public/images/dependency-injection-in-java/Collision.png){:loading="lazy"}
 
 ## El Principio de Inyección de Dependencias
 
@@ -137,10 +137,9 @@ class Main {
 }
 ```
 
-![npe](https://carloschac.in/public/images/dependency-injection-in-java/npe.png)
+![npe](https://carloschac.in/public/images/dependency-injection-in-java/npe.png){:loading="lazy"}
 
 En un lenguaje de tipo estático como Java, siempre es bueno dejar que el compilador nos ayude. Ver `Inyección con Constructor`
-
 
 ### Inyección con Constructor (Altamente recomendado)
 
@@ -177,12 +176,13 @@ class Main {
 ```
 
 **VENTAJAS:**
+
 - La funcionalidad permanece intacta en comparación con el enfoque de `Inyección Setter`
 - Eliminamos la inicialización `nueva` de la` ClaseA`.
 - Todavía podemos inyectar una subclase especializada de `ClassB` a` ClassA`.
 - Ahora el compilador nos pedirá las dependencias que necesitamos en tiempo de compilación.
 
-![Happy](https://carloschac.in/public/images/dependency-injection-in-java/Happy.png)
+![Happy](https://carloschac.in/public/images/dependency-injection-in-java/Happy.png){:loading="lazy"}
 
 ### Inyección con Fields (Niños no intenten esto en casa)
 
@@ -199,7 +199,7 @@ NOTA:
 
 > Si `ClassA` tiene una dependencia de` ClassB`, el constructor `ClassA` debería requerir` ClassB`.
 
-![Feedback](https://carloschac.in/public/images/dependency-injection-in-java/Feedback.png)
+![Feedback](https://carloschac.in/public/images/dependency-injection-in-java/Feedback.png){:loading="lazy"}
 
 ## Ejemplo Realista
 
@@ -208,11 +208,12 @@ Cada ejemplo de `Hello World` para cualquier idea, concepto o patrón es muy sim
 Ahora que conocemos las ventajas del `Principio de Inyección de Dependencia` usando el enfoque de `Inyección de constructor`, creemos un ejemplo más realista para ver algunos inconvenientes y cómo podemos resolverlo sin introducir una nueva capa en la mezcla.
 
 ### La Aplicación de Tareas (ToDo's App)
-![Todos](https://carloschac.in/public/images/dependency-injection-in-java/Todos.png)
+
+![Todos](https://carloschac.in/public/images/dependency-injection-in-java/Todos.png){:loading="lazy"}
 
 Diseñemos una aplicación de Todo para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para administrar nuestra lista de tareas, y una arquitectura original puede ser así:
 
-![3](https://carloschac.in/public/images/dependency-injection-in-java/3.png)
+![3](https://carloschac.in/public/images/dependency-injection-in-java/3.png){:loading="lazy"}
 
 - `TodoApp` es la clase principal que va a inicializar nuestra aplicación; Puede ser una aplicación de Android, una página web o una aplicación de escritorio con cualquier marco.
 - `TodoView` es la clase que mostraría una vista para interactuar, esta clase va a delegar los aspectos relacionados con los datos al` TodoHttpClient`. Su única responsabilidad es pintar / dibujar / renderizar la información y obtener la entrada para realizar acciones contra los datos utilizando la dependencia `TodoHttpClient`.
@@ -221,7 +222,7 @@ Diseñemos una aplicación de Todo para realizar operaciones CRUD (Crear, Leer, 
 
 <!-- <img src="http://yuml.me/diagram/scruffy/class/[TodoApp]->[TodoView],[TodoView]=>[TodoProvider],[TodoHttpClient]->[TodoProvider],[TodoApp]=>[TodoHttpClient]" alt="todoApp" /> -->
 
-![4](https://carloschac.in/public/images/dependency-injection-in-java/4.png)
+![4](https://carloschac.in/public/images/dependency-injection-in-java/4.png){:loading="lazy"}
 
 Escribamos las clases de Java para nuestro diseño usando el enfoque de `Inyección del constructor` que acabamos de aprender:
 
@@ -264,7 +265,7 @@ class Main {
 
 Ahora enfoquemos nuestra atención en la relación entre las clases `TodoView` y` TodoHttpClient` y agreguemos más detalles:
 
-![Magic](https://carloschac.in/public/images/dependency-injection-in-java/Magic.png)
+![Magic](https://carloschac.in/public/images/dependency-injection-in-java/Magic.png){:loading="lazy"}
 
 ```java
 class TodoHttpClient extends MyMagicalHttpAbstraction {
@@ -339,7 +340,8 @@ class TodoView extends MyFrameworkView {
 ```
 
 ## Testing our design
-![Scientist](https://carloschac.in/public/images/dependency-injection-in-java/Scientist.png)
+
+![Scientist](https://carloschac.in/public/images/dependency-injection-in-java/Scientist.png){:loading="lazy"}
 
 Creemos una prueba unitaria para la clase `TodoView` donde probamos la clase de forma aislada sin instanciar ninguna de sus dependencias. En este caso, la dependencia es `TodoHttpClient`:
 
@@ -365,18 +367,18 @@ class TodoViewTest {
 Ahora que tenemos nuestro caso de prueba aprobado, analicemos cómo nuestro diseño impacta el enfoque de prueba:
 
 - Incluimos la librería [Mockito](https://site.mockito.org/) para poder crear una instancia falsa de `TodoHttpClient`, y eso agrega mucha complejidad.
-- Tenemos que preparar nuestra instancia de `TodoHttpClient` para falsificar el regreso de una lista vacía al llamar al método` getAll () `, ahora nuestra prueba de unidad también contiene detalles de implementación sobre el` TodoHttpClient`.
+- Tenemos que preparar nuestra instancia de `TodoHttpClient` para falsificar el regreso de una lista vacía al llamar al método`getAll ()`, ahora nuestra prueba de unidad también contiene detalles de implementación sobre el` TodoHttpClient`.
 - Además, dado que `TodoHttpClient` es una clase concreta, no podemos cambiar la implementación para llamar a un DB sin tener que cambiar también la clase` TodoView`, y tendríamos que reescribir las pruebas unitarias incluso cuando deberían aislar esta implementación detalle.
 
 ## Mejoremos nuestro diseño
 
-![VideoLearning](https://carloschac.in/public/images/dependency-injection-in-java/VideoLearning.png)
+![VideoLearning](https://carloschac.in/public/images/dependency-injection-in-java/VideoLearning.png){:loading="lazy"}
 
 Una cosa que podemos hacer para desacoplar nuestras clases es introducir una interfaz, ya que el lenguaje Java siempre es bueno confiar en abstracciones en lugar de confiar en implementaciones reales.
 
 Pongamos una interfaz entre `TodoView` y` TodoHttpClient`:
 
-![5](https://carloschac.in/public/images/dependency-injection-in-java/5.png)
+![5](https://carloschac.in/public/images/dependency-injection-in-java/5.png){:loading="lazy"}
 
 **TodoProvider**
 
@@ -475,7 +477,8 @@ new TodoApp(new TodoView(new TodoDbProvider("dbName", "dbUser", "dbPassword")));
 ```
 
 ## Veamos cómo eso ayuda en las pruebas unitarias
-![Library](https://carloschac.in/public/images/dependency-injection-in-java/Library.png)
+
+![Library](https://carloschac.in/public/images/dependency-injection-in-java/Library.png){:loading="lazy"}
 
 ```java
 @ExtendWith(MockitoExtension.class)

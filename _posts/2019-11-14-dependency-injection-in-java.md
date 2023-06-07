@@ -8,7 +8,7 @@ author: cchacin
 image: /public/images/dependency-injection-in-java/Collaborators.png
 ---
 
-![Collaborators](https://carloschac.in/public/images/dependency-injection-in-java/Collaborators.png)
+![Collaborators](https://carloschac.in/public/images/dependency-injection-in-java/Collaborators.png){:loading="lazy"}
 
 > Lee la versión en Español [aquí](https://carloschac.in/2020/02/10/dependency-injection-in-java-spanish/)
 
@@ -22,7 +22,7 @@ In this article, we are going to describe the concept of Dependency Injection in
 
 When a class `ClassA` uses any method of another class `ClassB`, we can say that `ClassB` is a dependency of `ClassA`.
 
-![1](https://carloschac.in/public/images/dependency-injection-in-java/1.png)
+![1](https://carloschac.in/public/images/dependency-injection-in-java/1.png){:loading="lazy"}
 
 ```java
 class ClassA {
@@ -37,7 +37,7 @@ class ClassA {
 
 In this example, `ClassA` is calculating 10% of the value, and calculating that value, it's reusing the functionality exposed by `ClassB`.
 
-![2](https://carloschac.in/public/images/dependency-injection-in-java/2.png)
+![2](https://carloschac.in/public/images/dependency-injection-in-java/2.png){:loading="lazy"}
 
 And it can be used like this:
 
@@ -57,7 +57,7 @@ Now, there is a big problem with this approach:
 
 If we needed to change/replace `ClassB` with `ClassC` because `ClassC` has an optimized version of the `calculate()` method, we need to recompile `ClassA` because we don't have a way to change that dependency, it's hardcoded inside of `ClassA`.
 
-![Collision](https://carloschac.in/public/images/dependency-injection-in-java/Collision.png)
+![Collision](https://carloschac.in/public/images/dependency-injection-in-java/Collision.png){:loading="lazy"}
 
 ## The Dependency Injection Principle
 
@@ -125,7 +125,7 @@ class Main {
 
 But there is a significant problem with the `Setter Injection` approach:
 
-We are hiding the `ClassB` dependency in `ClassA` because by reading the constructor signature, we cannot identify its dependencies right away. The code below causes a `NullPointerException`  on runtime:
+We are hiding the `ClassB` dependency in `ClassA` because by reading the constructor signature, we cannot identify its dependencies right away. The code below causes a `NullPointerException` on runtime:
 
 ```java
 class Main {
@@ -137,10 +137,9 @@ class Main {
 }
 ```
 
-![npe](https://carloschac.in/public/images/dependency-injection-in-java/npe.png)
+![npe](https://carloschac.in/public/images/dependency-injection-in-java/npe.png){:loading="lazy"}
 
 In a statically typed language like Java, it's always a good thing to let the compiler help us. See `Constructor Injection`
-
 
 ### Constructor Injection (Highly recommended)
 
@@ -177,12 +176,13 @@ class Main {
 ```
 
 **ADVANTAGES:**
+
 - The functionality remains intact compared with the `Setter Injection` approach
 - We removed the `new` initialization from the `ClassA`.
 - We still can inject a specialized subclass of `ClassB` to `ClassA`.
 - Now the compiler is going to ask us for the dependencies that we need in compile time.
 
-![Happy](https://carloschac.in/public/images/dependency-injection-in-java/Happy.png)
+![Happy](https://carloschac.in/public/images/dependency-injection-in-java/Happy.png){:loading="lazy"}
 
 ### Field Injection (Kids don't try this at home)
 
@@ -199,7 +199,7 @@ NOTE:
 
 > If `ClassA` has a dependency on `ClassB`, `ClassA` constructor should require `ClassB`.
 
-![Feedback](https://carloschac.in/public/images/dependency-injection-in-java/Feedback.png)
+![Feedback](https://carloschac.in/public/images/dependency-injection-in-java/Feedback.png){:loading="lazy"}
 
 ## Realistic Example
 
@@ -208,20 +208,21 @@ Every single `Hello World` example for any idea, concept, or pattern is super si
 Now that we know the advantages of the `Dependency Injection Principle` using the `Constructor Injection` approach, let's create a more realistic example to see some inconveniences and how can we solve it without introducing a new layer to the mix.
 
 ### The Todo's Application
-![Todos](https://carloschac.in/public/images/dependency-injection-in-java/Todos.png)
+
+![Todos](https://carloschac.in/public/images/dependency-injection-in-java/Todos.png){:loading="lazy"}
 
 Let's design a Todo's Application to perform CRUD operations (Create, Read, Update, Delete) to manage our todo list, and an original architecture can be like this:
 
-![3](https://carloschac.in/public/images/dependency-injection-in-java/3.png)
+![3](https://carloschac.in/public/images/dependency-injection-in-java/3.png){:loading="lazy"}
 
 - `TodoApp` is the main class that is going to initialize our application; this can be an android app, web page, or a desktop application using any framework.
-- `TodoView` is the class that would display a view to interact with, this class is going to delegate the data-related aspects to the `TodoHttpClient`.  It's only responsibility is to paint/draw/render the information and get the input to perform actions against the data using the `TodoHttpClient` dependency.
+- `TodoView` is the class that would display a view to interact with, this class is going to delegate the data-related aspects to the `TodoHttpClient`. It's only responsibility is to paint/draw/render the information and get the input to perform actions against the data using the `TodoHttpClient` dependency.
 - `TodoHttpClient` is the class that contains a set of HTTP methods to persists `Todo` objects using a REST API.
 - `Todo` is a value object that represents a todo item in our data store.
 
 <!-- <img src="http://yuml.me/diagram/scruffy/class/[TodoApp]->[TodoView],[TodoView]=>[TodoProvider],[TodoHttpClient]->[TodoProvider],[TodoApp]=>[TodoHttpClient]" alt="todoApp" /> -->
 
-![4](https://carloschac.in/public/images/dependency-injection-in-java/4.png)
+![4](https://carloschac.in/public/images/dependency-injection-in-java/4.png){:loading="lazy"}
 
 Let's write the Java classes for our design using the `Constructor Injection` approach that we just learned:
 
@@ -264,7 +265,7 @@ class Main {
 
 Now let's focus our attention on the relationship between the `TodoView` and `TodoHttpClient` classes and add more details to them:
 
-![Magic](https://carloschac.in/public/images/dependency-injection-in-java/Magic.png)
+![Magic](https://carloschac.in/public/images/dependency-injection-in-java/Magic.png){:loading="lazy"}
 
 ```java
 class TodoHttpClient extends MyMagicalHttpAbstraction {
@@ -339,7 +340,8 @@ class TodoView extends MyFrameworkView {
 ```
 
 ## Testing our design
-![Scientist](https://carloschac.in/public/images/dependency-injection-in-java/Scientist.png)
+
+![Scientist](https://carloschac.in/public/images/dependency-injection-in-java/Scientist.png){:loading="lazy"}
 
 Let's create a unit test for the `TodoView` class where we test the class in isolation without instantiating any of its dependencies. In this case, the dependency is `TodoHttpClient`:
 
@@ -369,13 +371,14 @@ Now that we have our test case passing, let's analyze how our design impacts the
 - Additionally, since `TodoHttpClient` is a concrete class, we cannot change the implementation to call a DB instead without having to change the `TodoView` class as well, and we would need to rewrite the unit tests even when they should isolate this implementation detail.
 
 ## Let's improve our design
-![VideoLearning](https://carloschac.in/public/images/dependency-injection-in-java/VideoLearning.png)
+
+![VideoLearning](https://carloschac.in/public/images/dependency-injection-in-java/VideoLearning.png){:loading="lazy"}
 
 One thing that we can do to decouple our classes is to introduce an interface since the Java language is always a good thing to rely on abstractions instead of relying on actual implementations.
 
 Let's put an interface between `TodoView` and `TodoHttpClient`:
 
-![5](https://carloschac.in/public/images/dependency-injection-in-java/5.png)
+![5](https://carloschac.in/public/images/dependency-injection-in-java/5.png){:loading="lazy"}
 
 **TodoProvider**
 
@@ -474,7 +477,8 @@ new TodoApp(new TodoView(new TodoDbProvider("dbName", "dbUser", "dbPassword")));
 ```
 
 ## Let's see how that helps in unit tests
-![Library](https://carloschac.in/public/images/dependency-injection-in-java/Library.png)
+
+![Library](https://carloschac.in/public/images/dependency-injection-in-java/Library.png){:loading="lazy"}
 
 ```java
 @ExtendWith(MockitoExtension.class)

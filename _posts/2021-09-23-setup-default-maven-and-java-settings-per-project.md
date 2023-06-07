@@ -9,7 +9,7 @@ tags: java maven settings configuration setup
 image: /public/images/maven-config/tree.png
 ---
 
-![github-actions](/public/images/maven-config/tree.png)
+![github-actions](/public/images/maven-config/tree.png){:loading="lazy"}
 
 I generally use many different options on maven projects to set up things like memory lower and upper limits, fail at the end, the process in batch, use x number of threads, etc. In addition to this, sometimes I need to pass flags to the JVM like add modules, garbage collector flags, etc., and it is difficult to remember and also error-prone to have something like this:
 
@@ -24,6 +24,7 @@ or even worst with the extended version of the flags:
 $ JAVA_OPTS="-Xms512m -Xmx1024m -Djava.awt.headless=true" \
 mvn --batch-mode --threads 4 -fail-at-end --activate-profiles ci verify
 ```
+
 Fortunately for us, since maven 3.3.1, we now can setup this per project, including the flags in these two files relatives to the project directory:
 
 <!-- more -->

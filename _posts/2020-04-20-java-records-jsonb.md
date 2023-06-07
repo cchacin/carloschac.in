@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  💾 Java 14 Records 🐞 with JakartaEE JSON-B
+title: 💾 Java 14 Records 🐞 with JakartaEE JSON-B
 description: Java 14 Record is a new kind of type declaration in the Java language. In this article, we are going to see how we can serialize and deserialize records to/from JSON using JakartaEE JSON-B.
 lang: en-us
 author: cchacin
 tags: jakartaee jsonb java14 records serialization
 ---
 
-![java-records-jsonb](https://carloschac.in/public/images/java-records-jsonb.png)
+![java-records-jsonb](https://carloschac.in/public/images/java-records-jsonb.png){:loading="lazy"}
 
 In the previous article about Java 14 Records, we saw how to start creating Records to avoid writing much boilerplate code that the compiler would generate for us.
 
@@ -83,13 +83,11 @@ To a json output like this:
 
 ```json
 {
-    "achievements": [
-        "Speaker"
-    ],
-    "address": "USA",
-    "birthday": "1990-11-11",
-    "firstName": "John",
-    "lastName": "Doe"
+  "achievements": ["Speaker"],
+  "address": "USA",
+  "birthday": "1990-11-11",
+  "firstName": "John",
+  "lastName": "Doe"
 }
 ```
 
@@ -187,7 +185,7 @@ record Person(
 Another alternative is to specify to the JSON-B implementation to serialize using private fields instead of the getters, for that we need to implement the [PropertyVisibilityStrategy](http://json-b.net/docs/api/java.json.bind/javax/json/bind/config/PropertyVisibilityStrategy.html) interface.
 
 > Provides mechanism on how to define customized property visibility strategy.
-This strategy can be set via [JsonbConfig](http://json-b.net/docs/api/java.json.bind/javax/json/bind/JsonbConfig.html).
+> This strategy can be set via [JsonbConfig](http://json-b.net/docs/api/java.json.bind/javax/json/bind/JsonbConfig.html).
 
 🔧 The interface has two methods:
 
@@ -218,7 +216,7 @@ var jsonb = JsonbBuilder.create(new JsonbConfig().withFormatting(true).withPrope
 
 ### ♻️ Now we have a passing test:
 
-![records-jsonb-passing-test](https://carloschac.in/public/images/records-jsonb-passing-test.png)
+![records-jsonb-passing-test](https://carloschac.in/public/images/records-jsonb-passing-test.png){:loading="lazy"}
 
 ## 💊 Testing Deserialization
 
@@ -356,6 +354,7 @@ public final class Person extends java.lang.Record {
 We can notice the `@JsonbCreator` annotation passed to the generated constructor. After that change, our test suite for serialization and deserialization of records with JSON-B passes.
 
 ## 🔆 Conclusions
+
 - ✅ We can use records to serialize and deserialize JSON request/response objects.
 - ✅ We described two ways of achieving serialization:
   - ✅ Renaming the fields to use the getter convention.

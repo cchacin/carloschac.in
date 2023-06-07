@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  🌒 JakartaEE JSON-B 🐝 Retrofit2 Converter
+title: 🌒 JakartaEE JSON-B 🐝 Retrofit2 Converter
 description: A Retrofit2 Converter.Factory for JakartaEE JSON Binding
 lang: en-us
 author: cchacin
 tags: jakartaee jsonb serialization retrofit
 ---
 
-![java-records-jsonb](/public/images/retrofit2.png)
+![java-records-jsonb](/public/images/retrofit2.png){:loading="lazy"}
 
 > Retrofit is pluggable allowing different serialization formats and their libraries to be used for converting Java types to their HTTP representation and parsing HTTP entities back into Java types.
 >
@@ -50,7 +50,6 @@ Just for fun, I created a [Retrofit2][2] `Converter.Factory` for [JakartaEE Json
   <version>1.0.8</version>
 </dependency>
 ```
-
 
 ##### JsonB Retrofit2 Converter
 

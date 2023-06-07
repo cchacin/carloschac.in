@@ -1,14 +1,14 @@
 ---
 layout: post
 date: "2021-03-03 17:33:16 -0800"
-title:  💾 Java Records 💿 with Jackson 2.12
+title: 💾 Java Records 💿 with Jackson 2.12
 description: Java Record is a new kind of type declaration in the Java language. In this article, we are going to see how we can serialize and deserialize records to/from JSON using Jackson 2.12.0.
 lang: en-us
 author: cchacin
 tags: jackson java14 records serialization
 ---
 
-![java-records-jackson](https://carloschac.in/public/images/java-records-jackson.png)
+![java-records-jackson](https://carloschac.in/public/images/java-records-jackson.png){:loading="lazy"}
 
 In the previous article about Java 14 Records, we saw how to start creating Records to avoid writing much boilerplate code that the compiler would generate for us.
 
@@ -93,11 +93,11 @@ To/From a json string like this:
 
 ```json
 {
-  "first_name" : "John",
-  "last_name" : "Doe",
-  "address" : "USA",
-  "birthday" : 981291289182,
-  "achievements" : [ "Speaker" ]
+  "first_name": "John",
+  "last_name": "Doe",
+  "address": "USA",
+  "birthday": 981291289182,
+  "achievements": ["Speaker"]
 }
 ```
 
@@ -166,6 +166,7 @@ void deserializeRecord() throws Exception {
 ```
 
 ## 🔆 Conclusions
+
 - ✅ We can start using Jackson >= [2.12.0](https://github.com/FasterXML/jackson/wiki/Jackson-Release-2.12) to serialize/deserialize Java Records.
 - 👷 This is a new feature, and there can be edge cases, try it out with caution.
 - 🐞 Report issues [here](https://github.com/FasterXML/jackson-core/issues) if you find any
