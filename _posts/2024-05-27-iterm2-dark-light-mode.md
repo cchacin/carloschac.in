@@ -4,7 +4,7 @@ title: 🚀 Auto-Switch iTerm2 Modes, Day & Night! 🌞🌚
 date: 2024-05-27 08:00 -0700
 description: iTerm2 has recently introduced a great feature, separate light and dark mode colors. This feature enhances the visual appeal of your terminal and keeps it in sync with your Mac's mode.
 lang: en-en
-author: chain
+author: cchacin
 tags: iterm2 macos tips-and-tricks terminal productivity
 ---
 
