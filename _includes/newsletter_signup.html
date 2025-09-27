@@ -1,0 +1,160 @@
+{% comment %}
+Newsletter signup component
+Usage: {% include newsletter_signup.html %}
+Optional parameters:
+- inline: true/false (default: false) - for inline placement
+- title: custom title (default: "Stay Updated")
+- description: custom description
+
+Note: Controlled by site.features.newsletter in _config.yml
+{% endcomment %}
+
+{% unless site.features.newsletter == false %}
+{% assign inline_mode = include.inline | default: false %}
+{% assign signup_title = include.title | default: "Stay Updated" %}
+{% assign signup_description = include.description | default: "Get notified about new posts and software engineering insights delivered straight to your inbox." %}
+
+<div class="newsletter-signup{% if inline_mode %} newsletter-inline{% endif %}">
+  <div class="newsletter-container">
+    <div class="newsletter-header">
+      <h3 class="newsletter-title">
+        <span class="newsletter-icon">📬</span>
+        {{ signup_title }}
+      </h3>
+      <p class="newsletter-description">{{ signup_description }}</p>
+    </div>
+
+    <div class="newsletter-form-container">
+      <!-- Generic form that can be configured for different providers -->
+      {% if site.newsletter.provider == "mailchimp" %}
+        <!-- Mailchimp form -->
+        <form action="{{ site.newsletter.mailchimp.action_url }}"
+              method="post"
+              class="newsletter-form"
+              target="_blank"
+              novalidate>
+          <div class="form-group">
+            <input type="email"
+                   name="EMAIL"
+                   placeholder="Enter your email address"
+                   required
+                   class="newsletter-input"
+                   aria-label="Email address for newsletter">
+            <button type="submit" class="newsletter-button">
+              <span class="button-text">Subscribe</span>
+              <span class="button-icon">→</span>
+            </button>
+          </div>
+
+          <!-- Mailchimp bot prevention -->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true">
+            <input type="text" name="{{ site.newsletter.mailchimp.bot_field }}" tabindex="-1" value="">
+          </div>
+        </form>
+
+      {% elsif site.newsletter.provider == "convertkit" %}
+        <!-- ConvertKit form -->
+        <form action="{{ site.newsletter.convertkit.action_url }}"
+              method="post"
+              class="newsletter-form"
+              target="_blank"
+              rel="noopener">
+          <div class="form-group">
+            <input type="email"
+                   name="email_address"
+                   placeholder="Enter your email address"
+                   required
+                   class="newsletter-input"
+                   aria-label="Email address for newsletter">
+            <button type="submit" class="newsletter-button">
+              <span class="button-text">Subscribe</span>
+              <span class="button-icon">→</span>
+            </button>
+          </div>
+        </form>
+
+      {% elsif site.newsletter.provider == "buttondown" %}
+        <!-- Buttondown form -->
+        <form action="{{ site.newsletter.buttondown.action_url }}"
+              method="post"
+              class="newsletter-form"
+              target="_blank">
+          <div class="form-group">
+            <input type="email"
+                   name="email"
+                   placeholder="Enter your email address"
+                   required
+                   class="newsletter-input"
+                   aria-label="Email address for newsletter">
+            <button type="submit" class="newsletter-button">
+              <span class="button-text">Subscribe</span>
+              <span class="button-icon">→</span>
+            </button>
+          </div>
+        </form>
+
+      {% else %}
+        <!-- Default/demo form (no backend configured) -->
+        <form class="newsletter-form newsletter-demo" onsubmit="handleNewsletterDemo(event)">
+          <div class="form-group">
+            <input type="email"
+                   name="email"
+                   placeholder="Enter your email address"
+                   required
+                   class="newsletter-input"
+                   aria-label="Email address for newsletter">
+            <button type="submit" class="newsletter-button">
+              <span class="button-text">Subscribe</span>
+              <span class="button-icon">→</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="newsletter-config-notice">
+          <p><strong>Newsletter not configured.</strong></p>
+          <details>
+            <summary>Setup instructions</summary>
+            <p>Add to your <code>_config.yml</code>:</p>
+            <pre><code>newsletter:
+  provider: "mailchimp"  # or "convertkit", "buttondown"
+  mailchimp:
+    action_url: "https://your-list.us1.list-manage.com/subscribe/post?u=..."
+    bot_field: "b_xxxxx_xxxxx"</code></pre>
+          </details>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="newsletter-privacy">
+      <p class="privacy-text">
+        <span class="privacy-icon">🔒</span>
+        No spam, unsubscribe anytime. Privacy policy: we respect your inbox.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% unless site.newsletter.provider %}
+<script>
+function handleNewsletterDemo(event) {
+  event.preventDefault();
+  const email = event.target.email.value;
+
+  // Simple demo feedback
+  const button = event.target.querySelector('.newsletter-button');
+  const originalHTML = button.innerHTML;
+
+  button.innerHTML = '<span class="button-text">✓ Demo</span>';
+  button.disabled = true;
+
+  setTimeout(() => {
+    button.innerHTML = originalHTML;
+    button.disabled = false;
+    event.target.email.value = '';
+  }, 2000);
+
+  console.log('Newsletter demo - would subscribe:', email);
+}
+</script>
+{% endunless %}
+{% endunless %}

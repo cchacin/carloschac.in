@@ -1,0 +1,103 @@
+# Speaking engagements data for easy content management
+upcoming_talks:
+  - title: "Modern Java Development Practices"
+    venue: "Java Conference 2025"
+    date: "TBD"
+    year: "2025"
+    description: "Exploring the latest Java features and best practices for building maintainable, performant applications in modern development environments."
+    tags:
+      - "Java"
+      - "Best Practices"
+      - "Performance"
+
+past_talks:
+  - title: "Building Resilient Microservices"
+    venue: "Spring One Conference"
+    date: "December 2024"
+    year: "2024"
+    month: "DEC"
+    description: "Strategies for building fault-tolerant microservices with Spring Boot, including circuit breakers, retry patterns, and observability practices."
+    tags:
+      - "Microservices"
+      - "Spring Boot"
+      - "Resilience"
+    links:
+      - text: "📹 Watch Recording"
+        url: "#"
+        type: "outline"
+      - text: "📊 View Slides"
+        url: "#"
+        type: "outline"
+
+  - title: "Testing Strategies for Modern Applications"
+    venue: "DevOps Days"
+    date: "October 2024"
+    year: "2024"
+    month: "OCT"
+    description: "Comprehensive testing approaches including unit, integration, and contract testing with TestContainers and modern testing frameworks."
+    tags:
+      - "Testing"
+      - "Quality Assurance"
+      - "DevOps"
+    links:
+      - text: "📹 Watch Recording"
+        url: "#"
+        type: "outline"
+      - text: "📊 View Slides"
+        url: "#"
+        type: "outline"
+
+  - title: "Cloud-Native Java Applications"
+    venue: "Cloud Summit"
+    date: "August 2024"
+    year: "2024"
+    month: "AUG"
+    description: "Best practices for deploying Java applications in cloud environments, covering containerization, orchestration, and cloud-specific patterns."
+    tags:
+      - "Cloud Native"
+      - "Kubernetes"
+      - "Docker"
+    links:
+      - text: "📹 Watch Recording"
+        url: "#"
+        type: "outline"
+      - text: "📊 View Slides"
+        url: "#"
+        type: "outline"
+
+speaking_topics:
+  - icon: "🏗️"
+    title: "Software Architecture"
+    description: "Microservices, event-driven architecture, and system design patterns for scalable applications."
+
+  - icon: "☕"
+    title: "Java & Spring"
+    description: "Modern Java development, Spring Boot best practices, and framework deep-dives."
+
+  - icon: "☁️"
+    title: "Cloud Technologies"
+    description: "Cloud-native development, containerization, and infrastructure as code."
+
+  - icon: "🧪"
+    title: "Testing Strategies"
+    description: "Comprehensive testing approaches, quality assurance, and testing automation."
+
+  - icon: "⚡"
+    title: "Performance"
+    description: "Application optimization, monitoring, and performance engineering techniques."
+
+  - icon: "🔧"
+    title: "Developer Productivity"
+    description: "Tools, workflows, and practices that enhance development team efficiency."
+
+cta:
+  title: "Invite Me to Speak"
+  description: "I'm available for conferences, meetups, workshops, and corporate events. Let's discuss how I can contribute to your event and share valuable insights with your audience."
+  buttons:
+    - text: "Invite Me to Speak"
+      url: "/contact"
+      type: "primary"
+    - text: "📺 YouTube Channel"
+      url: "https://www.youtube.com/@cchacin?sub_confirmation=1"
+      type: "secondary"
+      external: true

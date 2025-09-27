@@ -1,0 +1,64 @@
+<script>
+// Sidebar toggle functionality
+(function() {
+  const sidebarToggle = document.getElementById('sidebar-toggle');
+  const sidebarItems = document.getElementById('sidebar-items');
+  const toggleIcon = document.querySelector('.toggle-icon');
+
+  if (sidebarToggle && sidebarItems) {
+    // Initialize sidebar state based on screen size
+    function initializeSidebar() {
+      if (window.innerWidth <= 1024) {
+        sidebarItems.style.display = 'none';
+        sidebarToggle.setAttribute('aria-expanded', 'false');
+        toggleIcon.textContent = '▼';
+      } else {
+        sidebarItems.style.display = 'block';
+        sidebarToggle.setAttribute('aria-expanded', 'true');
+        toggleIcon.textContent = '▲';
+      }
+    }
+
+    // Toggle sidebar visibility
+    sidebarToggle.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      const newState = !isExpanded;
+
+      this.setAttribute('aria-expanded', newState);
+      sidebarItems.style.display = newState ? 'block' : 'none';
+      toggleIcon.textContent = newState ? '▲' : '▼';
+    });
+
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(initializeSidebar, 250);
+    });
+
+    // Initialize on load
+    initializeSidebar();
+
+    // Close sidebar when clicking search results (mobile UX)
+    document.addEventListener('click', function(event) {
+      if (event.target.closest('.search-result a') && window.innerWidth <= 768) {
+        sidebarItems.style.display = 'none';
+        sidebarToggle.setAttribute('aria-expanded', 'false');
+        toggleIcon.textContent = '▼';
+      }
+    });
+
+    // Smooth scroll to main content when sidebar link is clicked on mobile
+    const quickLinks = document.querySelectorAll('.quick-link');
+    quickLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (this.getAttribute('href').startsWith('#') && window.innerWidth <= 768) {
+          sidebarItems.style.display = 'none';
+          sidebarToggle.setAttribute('aria-expanded', 'false');
+          toggleIcon.textContent = '▼';
+        }
+      });
+    });
+  }
+})();
+</script>

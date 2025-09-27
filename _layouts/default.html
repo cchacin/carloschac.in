@@ -1,21 +1,68 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {% include head.html %}
 
 <body>
-  <article>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header role="banner" class="site-header">
     <div class="container">
-      <h1>
-        <a href="{{ site.url }}">{{ site.title }}</a>
-      </h1>
-      <h2>Youtube Channel: <a href="https://www.youtube.com/@cchacin?sub_confirmation=1">@cchacin</a></h2>
-      <h2>{{ site.tagline }}</h2>
+      <div class="header-brand">
+        <div class="site-title">
+          <a href="{{ site.url }}" class="brand-link">
+            <span class="brand-icon">👨‍💻</span>
+            <span class="brand-text">{{ site.title }}</span>
+          </a>
+        </div>
+        <div class="site-taglines">
+          <p class="youtube-link">Youtube Channel: <a href="https://www.youtube.com/@cchacin?sub_confirmation=1" target="_blank" rel="noopener">@cchacin</a></p>
+          <p class="site-tagline">{{ site.tagline }}</p>
+        </div>
+      </div>
       {% include menu.html %}
-      <br />
+    </div>
+  </header>
+
+  <main id="main-content" role="main" aria-label="Main content">
+    <div class="container">
       {{ content }}
     </div>
-  </article>
+  </main>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    // Back to top functionality
+    (function() {
+      const backToTopButton = document.getElementById('backToTop');
+      const showButtonHeight = 300; // Show button after scrolling 300px
+
+      function toggleBackToTopButton() {
+        if (window.pageYOffset > showButtonHeight) {
+          backToTopButton.classList.add('show');
+        } else {
+          backToTopButton.classList.remove('show');
+        }
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+
+      // Show/hide button on scroll
+      window.addEventListener('scroll', toggleBackToTopButton);
+
+      // Scroll to top on click
+      backToTopButton.addEventListener('click', scrollToTop);
+
+      // Initial check
+      toggleBackToTopButton();
+    })();
+  </script>
 </body>
 
 </html>

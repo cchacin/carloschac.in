@@ -1,10 +1,40 @@
 ---
 layout: default
-title: "404: Page not found"
+title: "404: Page Not Found"
+description: The page you're looking for doesn't exist. Explore Carlos Chacin's software engineering blog and tutorials.
 permalink: 404.html
 ---
 
 <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="{{ site.baseurl }}/">Head back home</a> to try finding it again.</p>
+  <div style="text-align: center; padding: 2rem 0;">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem; color: #e74c3c;">404</h1>
+    <h2 style="margin-bottom: 2rem;">Page Not Found</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #666;">
+      Sorry, the page you're looking for doesn't exist or has been moved.
+    </p>
+
+    <div style="margin-bottom: 3rem;">
+      <a href="{{ site.baseurl }}/" class="btn btn-primary" style="margin: 0 0.5rem;">
+        🏠 Go Home
+      </a>
+      <a href="{{ site.baseurl }}/about" class="btn btn-secondary" style="margin: 0 0.5rem;">
+        👨‍💻 About Me
+      </a>
+    </div>
+
+    <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+      <h3>Recent Posts:</h3>
+      <ul style="list-style: none; padding: 0;">
+        {% for post in site.posts limit:5 %}
+        <li style="margin-bottom: 0.8rem; padding: 0.5rem; border-bottom: 1px solid #eee;">
+          <a href="{{ site.baseurl }}{{ post.url }}" style="color: #0074d9; font-weight: 500;">
+            {{ post.title }}
+          </a>
+          <br>
+          <small style="color: #666;">{{ post.date | date: "%B %d, %Y" }}</small>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>

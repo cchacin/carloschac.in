@@ -1,6 +1,7 @@
 ---
 layout: page
-title: About
+title: About Carlos Chacin - Software Engineer & Content Creator
+description: Learn about Carlos Chacin, a software engineer specializing in Java, Spring Boot, and cloud technologies. Creator of educational content and open source projects.
 lang: en-us
 ---
 
@@ -25,9 +26,9 @@ lang: en-us
 
 <br />
 
-![Carlo's github stats](https://github-readme-stats.vercel.app/api?username=cchacin&show_icons=true&include_all_commits=true&count_private=true)
+![Carlos Chacin's GitHub Statistics - showing repositories, commits, and coding activity](https://github-readme-stats.vercel.app/api?username=cchacin&show_icons=true&include_all_commits=true&count_private=true)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=cchacin&layout=compact)](https://github.com/cchacin)
+[![Carlos Chacin's most used programming languages statistics](https://github-readme-stats.vercel.app/api/top-langs/?username=cchacin&layout=compact)](https://github.com/cchacin)
 
 ### Popular Repositories
 
@@ -48,8 +49,8 @@ lang: en-us
 [![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ArpNetworking&repo=metrics-client-java&show_owner=true)](https://github.com/ArpNetworking/metrics-client-java)
 
 
-[website]: https://CarlosChac.in
+[website]: https://carloschac.in
 [twitter]: https://twitter.com/CarlosChacin
 [instagram]: https://instagram.com/cchacin
-[linkedin]: https://www.linkedin.com/in/carloschacin/?locale=en_US
+[linkedin]: https://www.linkedin.com/in/CarlosChacin
 [microgen]: https://github.com/cchacin/MicroGen

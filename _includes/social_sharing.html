@@ -1,0 +1,129 @@
+{% comment %}
+Social sharing buttons for posts
+Usage: {% include social_sharing.html %}
+{% endcomment %}
+
+{% assign post_url = page.url | absolute_url | url_encode %}
+{% assign post_title = page.title | url_encode %}
+{% assign post_description = page.description | default: page.excerpt | strip_html | strip_newlines | truncate: 160 | url_encode %}
+
+<div class="social-sharing">
+  <div class="social-sharing-header">
+    <h3 class="social-sharing-title">
+      <span class="sharing-icon">📤</span>
+      Share this post
+    </h3>
+  </div>
+
+  <div class="social-sharing-buttons">
+    <!-- Twitter -->
+    <a href="https://twitter.com/intent/tweet?text={{ post_title }}&url={{ post_url }}&via={{ site.twitter.username | default: site.social.twitter }}"
+       class="social-share-btn twitter-share"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Share on Twitter">
+      <span class="share-icon">🐦</span>
+      <span class="share-text">Twitter</span>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ post_url }}&title={{ post_title }}&summary={{ post_description }}"
+       class="social-share-btn linkedin-share"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Share on LinkedIn">
+      <span class="share-icon">💼</span>
+      <span class="share-text">LinkedIn</span>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ post_url }}"
+       class="social-share-btn facebook-share"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Share on Facebook">
+      <span class="share-icon">📘</span>
+      <span class="share-text">Facebook</span>
+    </a>
+
+    <!-- Reddit -->
+    <a href="https://reddit.com/submit?url={{ post_url }}&title={{ post_title }}"
+       class="social-share-btn reddit-share"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Share on Reddit">
+      <span class="share-icon">🔗</span>
+      <span class="share-text">Reddit</span>
+    </a>
+
+    <!-- HackerNews -->
+    <a href="https://news.ycombinator.com/submitlink?u={{ post_url }}&t={{ post_title }}"
+       class="social-share-btn hackernews-share"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Share on Hacker News">
+      <span class="share-icon">📰</span>
+      <span class="share-text">HN</span>
+    </a>
+
+    <!-- Copy Link -->
+    <button class="social-share-btn copy-link-btn"
+            onclick="copyToClipboard('{{ page.url | absolute_url }}')"
+            aria-label="Copy link to clipboard">
+      <span class="share-icon">📋</span>
+      <span class="share-text">Copy</span>
+    </button>
+  </div>
+
+  <!-- Copy success message -->
+  <div class="copy-success" id="copy-success" style="display: none;">
+    <span class="success-icon">✅</span>
+    Link copied to clipboard!
+  </div>
+</div>
+
+<script>
+function copyToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    // Modern clipboard API
+    navigator.clipboard.writeText(text).then(function() {
+      showCopySuccess();
+    }).catch(function(err) {
+      fallbackCopyToClipboard(text);
+    });
+  } else {
+    // Fallback for older browsers
+    fallbackCopyToClipboard(text);
+  }
+}
+
+function fallbackCopyToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.position = "fixed";
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    if (successful) {
+      showCopySuccess();
+    }
+  } catch (err) {
+    console.error('Copy failed:', err);
+  }
+
+  document.body.removeChild(textArea);
+}
+
+function showCopySuccess() {
+  var successMsg = document.getElementById('copy-success');
+  successMsg.style.display = 'block';
+  setTimeout(function() {
+    successMsg.style.display = 'none';
+  }, 2000);
+}
+</script>

@@ -1,0 +1,135 @@
+{% comment %}
+Enhanced author bio component
+Usage: {% include author_bio.html %}
+Optional parameters:
+- show_follow: true/false (default: true)
+- compact: true/false (default: false)
+{% endcomment %}
+
+{% assign show_follow = include.show_follow | default: true %}
+{% assign compact_mode = include.compact | default: false %}
+
+<div class="author-bio{% if compact_mode %} author-bio-compact{% endif %}">
+  <div class="author-bio-container">
+    {% unless compact_mode %}
+    <div class="author-avatar">
+      <img src="https://github.com/{{ site.social.github | default: 'cchacin' }}.png?size=120"
+           alt="{{ site.author.name | default: site.title }}'s profile picture"
+           loading="lazy"
+           class="avatar-image">
+    </div>
+    {% endunless %}
+
+    <div class="author-content">
+      <div class="author-header">
+        <h3 class="author-name">{{ site.author.name | default: site.title }}</h3>
+        {% if site.author.title %}
+        <p class="author-title">{{ site.author.title }}</p>
+        {% endif %}
+      </div>
+
+      <div class="author-description">
+        {% if site.author.bio %}
+          <p>{{ site.author.bio }}</p>
+        {% else %}
+          <p>Software engineer sharing experiences in Java, cloud technologies, and modern development practices.
+             Passionate about clean code, architecture, and continuous learning.</p>
+        {% endif %}
+      </div>
+
+      {% if show_follow %}
+      <div class="author-social">
+        <h4 class="social-title">Follow me:</h4>
+        <div class="social-links">
+          {% if site.social.github %}
+          <a href="https://github.com/{{ site.social.github }}"
+             class="social-link github"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Follow on GitHub">
+            <span class="social-icon">🔧</span>
+            <span class="social-text">GitHub</span>
+          </a>
+          {% endif %}
+
+          {% if site.social.twitter %}
+          <a href="https://twitter.com/{{ site.social.twitter }}"
+             class="social-link twitter"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Follow on Twitter">
+            <span class="social-icon">🐦</span>
+            <span class="social-text">Twitter</span>
+          </a>
+          {% endif %}
+
+          {% if site.social.linkedin %}
+          <a href="{{ site.social.linkedin }}"
+             class="social-link linkedin"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Connect on LinkedIn">
+            <span class="social-icon">💼</span>
+            <span class="social-text">LinkedIn</span>
+          </a>
+          {% endif %}
+
+          {% if site.social.youtube %}
+          <a href="{{ site.social.youtube }}"
+             class="social-link youtube"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Subscribe on YouTube">
+            <span class="social-icon">📺</span>
+            <span class="social-text">YouTube</span>
+          </a>
+          {% endif %}
+
+          {% if site.author.email %}
+          <a href="mailto:{{ site.author.email }}"
+             class="social-link email"
+             aria-label="Send email">
+            <span class="social-icon">📧</span>
+            <span class="social-text">Email</span>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% unless compact_mode %}
+      <div class="author-stats">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">{{ site.posts | size }}</span>
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ site.posts | map: 'tags' | join: ',' | split: ',' | uniq | size }}</span>
+            <span class="stat-label">Topics</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">
+              {% assign total_words = 0 %}
+              {% for post in site.posts %}
+                {% assign words = post.content | strip_html | number_of_words %}
+                {% assign total_words = total_words | plus: words %}
+              {% endfor %}
+              {{ total_words | divided_by: 1000 }}k
+            </span>
+            <span class="stat-label">Words</span>
+          </div>
+        </div>
+      </div>
+      {% endunless %}
+    </div>
+  </div>
+
+  {% if show_follow and compact_mode %}
+  <div class="author-cta">
+    <a href="/about" class="author-cta-link btn btn-outline">
+      Learn more about me
+    </a>
+  </div>
+  {% endif %}
+</div>

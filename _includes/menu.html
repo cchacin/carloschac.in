@@ -1,10 +1,67 @@
-<nav>
-  <div>
+<nav role="navigation" aria-label="Main navigation">
+  <button class="menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+    ☰
+  </button>
 
-    <ul>
+  <div class="menu-items" id="menu-items">
+    <ul role="menubar">
       {% for menu in site.data.menus %}
-      <li><a href="{{ menu.url }}">{{ menu.text }}</a>&nbsp;&nbsp;</li>
+      <li role="none">
+        {% assign current_page = false %}
+        {% if menu.url == page.url or menu.url == request.path %}
+          {% assign current_page = true %}
+        {% elsif menu.url == "/" and page.url == "/index.html" %}
+          {% assign current_page = true %}
+        {% elsif menu.text == "Blog" and page.layout == "post" %}
+          {% assign current_page = true %}
+        {% endif %}
+
+        <a href="{{ menu.url }}"
+           role="menuitem"
+           {% if current_page %}aria-current="page"{% endif %}>
+          {{ menu.text }}
+        </a>
+      </li>
       {% endfor %}
     </ul>
   </div>
 </nav>
+
+<script>
+// Mobile menu toggle
+(function() {
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const menuItems = document.getElementById('menu-items');
+
+  if (menuToggle && menuItems) {
+    menuToggle.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+      this.setAttribute('aria-expanded', !isExpanded);
+      menuItems.classList.toggle('show');
+
+      // Update button text
+      this.textContent = isExpanded ? '☰' : '✕';
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!menuToggle.contains(event.target) && !menuItems.contains(event.target)) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuItems.classList.remove('show');
+        menuToggle.textContent = '☰';
+      }
+    });
+
+    // Close menu when pressing Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && menuItems.classList.contains('show')) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuItems.classList.remove('show');
+        menuToggle.textContent = '☰';
+        menuToggle.focus();
+      }
+    });
+  }
+})();
+</script>

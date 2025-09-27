@@ -1,0 +1,29 @@
+{% comment %}
+Responsive image include with lazy loading and srcset support
+Usage: {% include responsive_image.html src="/public/images/example.png" alt="Alt text" %}
+Optional parameters:
+- sizes: responsive sizes attribute (default: "(max-width: 768px) 100vw, 768px")
+- class: additional CSS classes
+- loading: loading attribute (default: "lazy")
+- caption: optional caption text
+{% endcomment %}
+
+{% assign image_path = include.src | remove_first: '/' %}
+{% assign base_path = image_path | split: '.' | first %}
+{% assign extension = image_path | split: '.' | last %}
+
+{% assign loading = include.loading | default: "lazy" %}
+{% assign sizes = include.sizes | default: "(max-width: 768px) 100vw, 768px" %}
+
+<figure class="responsive-image{% if include.class %} {{ include.class }}{% endif %}">
+  <img
+    src="{{ include.src }}"
+    alt="{{ include.alt }}"
+    loading="{{ loading }}"
+    sizes="{{ sizes }}"
+    {% if include.class %}class="{{ include.class }}"{% endif %}
+  />
+  {% if include.caption %}
+    <figcaption>{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>

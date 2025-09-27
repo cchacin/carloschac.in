@@ -44,6 +44,8 @@ GEM
       sprockets-sass
     jekyll-compose (0.12.0)
       jekyll (>= 3.7, < 5.0)
+    jekyll-feed (0.17.0)
+      jekyll (>= 3.7, < 5.0)
     jekyll-paginate (1.1.0)
     jekyll-sass-converter (3.0.0)
       sass-embedded (~> 1.54)
@@ -108,6 +110,7 @@ DEPENDENCIES
   jekyll
   jekyll-assets
   jekyll-compose
+  jekyll-feed
   jekyll-paginate
   jekyll-seo-tag
   jekyll-sitemap

@@ -12,7 +12,9 @@ tags: aws java java17 lambda aws-lambda
 
 AWS recently announced [Java 17 support for Lambdas](https://aws.amazon.com/about-aws/whats-new/2023/04/aws-lambda-java-17/), In this blog post, we'll explore how to create a Java 17 AWS Lambda Function without IDE, build tool or any dependency.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VhxhmMqjEl8?sub_confirmation=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/VhxhmMqjEl8?sub_confirmation=1" title="Java 17 y AWS Lambda" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 Fist let's create the lambda function code:
 

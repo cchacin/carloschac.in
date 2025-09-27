@@ -1,0 +1,41 @@
+<nav class="post-navigation" role="navigation" aria-label="Post navigation">
+  <div class="nav-links">
+    {% if page.previous %}
+      <div class="nav-previous">
+        <a href="{{ site.baseurl }}{{ page.previous.url }}" rel="prev" class="nav-link">
+          <span class="nav-direction">← Previous</span>
+          <span class="nav-title">{{ page.previous.title }}</span>
+        </a>
+      </div>
+    {% else %}
+      <div class="nav-previous nav-disabled">
+        <span class="nav-link">
+          <span class="nav-direction">← Previous</span>
+          <span class="nav-title">No previous post</span>
+        </span>
+      </div>
+    {% endif %}
+
+    {% if page.next %}
+      <div class="nav-next">
+        <a href="{{ site.baseurl }}{{ page.next.url }}" rel="next" class="nav-link">
+          <span class="nav-direction">Next →</span>
+          <span class="nav-title">{{ page.next.title }}</span>
+        </a>
+      </div>
+    {% else %}
+      <div class="nav-next nav-disabled">
+        <span class="nav-link">
+          <span class="nav-direction">Next →</span>
+          <span class="nav-title">No next post</span>
+        </span>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="nav-center">
+    <a href="{{ site.baseurl }}/" class="btn btn-outline nav-home">
+      🏠 All Posts
+    </a>
+  </div>
+</nav>

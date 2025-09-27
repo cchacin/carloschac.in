@@ -12,7 +12,9 @@ tagline:             'Software Engineering Experiences'
 description:         'Software Engineering experiences'
 url:                 https://carloschac.in
 baseurl:             ''
+lang:                en
 paginate:            5
+paginate_path:       "/blog/page:num/"
 excerpt_separator: "<!-- more -->"
 
 sass:
@@ -36,13 +38,25 @@ social:
     - https://twitter.com/CarlosChacin
     - https://www.linkedin.com/in/CarlosChacin
     - https://github.com/cchacin
+    - https://www.youtube.com/@cchacin
 
 google_site_verification:
 
+# Google Analytics 4 - Add your GA4 tracking ID here
+# google_analytics_id: G-XXXXXXXXXX
+
 # Custom vars
 version:             1.0.0
+
+# Feature toggles
+features:
+  newsletter: false        # Enable/disable newsletter signup
+  comments: false         # Enable/disable comments system
+  social_sharing: true    # Enable/disable social sharing buttons
+
 plugins:
   - jekyll-assets
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-feed

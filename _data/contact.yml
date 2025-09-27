@@ -1,0 +1,83 @@
+# Contact information and services data for easy content management
+contact_methods:
+  - icon: "📧"
+    title: "Email"
+    description: "For consulting, speaking opportunities, or general inquiries"
+    button:
+      text: "Send Email"
+      url: "mailto:cchacin@gmail.com"
+      type: "primary"
+
+  - icon: "💼"
+    title: "LinkedIn"
+    description: "Professional networking and career discussions"
+    button:
+      text: "Connect on LinkedIn"
+      url: "https://www.linkedin.com/in/cchacin"
+      type: "outline"
+      external: true
+
+  - icon: "💻"
+    title: "GitHub"
+    description: "Code collaboration and open source contributions"
+    button:
+      text: "Follow on GitHub"
+      url: "https://github.com/cchacin"
+      type: "outline"
+      external: true
+
+  - icon: "📺"
+    title: "YouTube"
+    description: "Video content and technical tutorials"
+    button:
+      text: "Subscribe to Channel"
+      url: "https://www.youtube.com/@cchacin?sub_confirmation=1"
+      type: "secondary"
+      external: true
+
+services:
+  - icon: "🏗️"
+    title: "Architecture Review"
+    description: "System architecture assessment, microservices design consultation, and technology stack recommendations for scalable applications."
+
+  - icon: "🧪"
+    title: "Testing Strategy"
+    description: "Comprehensive testing strategy development, quality assurance process improvement, and testing framework implementation guidance."
+
+  - icon: "☁️"
+    title: "Cloud Migration"
+    description: "Cloud-native application development, containerization strategies, and infrastructure modernization planning."
+
+  - icon: "🎯"
+    title: "Team Mentoring"
+    description: "Development team coaching, best practices training, and technical skill development programs."
+
+  - icon: "🎤"
+    title: "Speaking Engagements"
+    description: "Conference presentations, workshop facilitation, and technical training sessions for teams and events."
+
+  - icon: "📝"
+    title: "Technical Writing"
+    description: "Documentation creation, technical blog posts, and educational content development for developer audiences."
+
+response_times:
+  - type: "Speaking Inquiries"
+    time: "Within 24 hours"
+
+  - type: "Consulting Requests"
+    time: "Within 48 hours"
+
+  - type: "General Questions"
+    time: "Within 3-5 business days"
+
+  - type: "Community Contributions"
+    time: "Best effort basis"
+
+contact_note:
+  title: "💡 Before Reaching Out"
+  description: "To help me provide the most valuable response, please include:"
+  items:
+    - "Brief context about your project or challenge"
+    - "Specific areas where you'd like assistance"
+    - "Timeline and scope of your inquiry"
+    - "Preferred communication method and frequency"

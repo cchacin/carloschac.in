@@ -1,0 +1,68 @@
+{% comment %}
+Comments section using Utterances (GitHub Issues)
+Enable by adding "comments: true" to post front matter
+Configure repository in _config.yml
+
+Note: Controlled by site.features.comments in _config.yml
+{% endcomment %}
+
+{% unless site.features.comments == false %}
+{% if page.comments != false and site.comments.utterances.repo %}
+<section class="comments-section" id="comments">
+  <div class="comments-header">
+    <h3 class="comments-title">
+      <span class="comments-icon">💬</span>
+      Discussion
+    </h3>
+    <p class="comments-description">
+      Comments are powered by <a href="https://utteranc.es/" target="_blank" rel="noopener">Utterances</a>.
+      To comment, you'll need a GitHub account. Comments will appear as issues in the repository.
+    </p>
+  </div>
+
+  <div class="comments-container">
+    <script src="https://utteranc.es/client.js"
+            repo="{{ site.comments.utterances.repo }}"
+            issue-term="{{ site.comments.utterances.issue_term | default: 'pathname' }}"
+            theme="{{ site.comments.utterances.theme | default: 'github-light' }}"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+
+  <!-- Fallback for users without JavaScript -->
+  <noscript>
+    <div class="comments-fallback">
+      <p>
+        <strong>Comments require JavaScript to load.</strong>
+        You can also <a href="https://github.com/{{ site.comments.utterances.repo }}/issues" target="_blank" rel="noopener">
+        view and create comments directly on GitHub</a>.
+      </p>
+    </div>
+  </noscript>
+</section>
+
+{% elsif page.comments != false %}
+<!-- Comments enabled but Utterances not configured -->
+<section class="comments-section comments-not-configured">
+  <div class="comments-header">
+    <h3 class="comments-title">
+      <span class="comments-icon">💬</span>
+      Comments
+    </h3>
+    <div class="comments-config-notice">
+      <p><strong>Comments are not yet configured.</strong></p>
+      <p>To enable comments, add the following to your <code>_config.yml</code>:</p>
+      <pre><code>comments:
+  utterances:
+    repo: "username/repository-name"
+    issue_term: "pathname"  # or "title", "url", etc.
+    theme: "github-light"   # or "github-dark", "preferred-color-scheme"</code></pre>
+      <p>
+        <a href="https://utteranc.es/" target="_blank" rel="noopener">Learn more about Utterances setup</a>
+      </p>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endunless %}

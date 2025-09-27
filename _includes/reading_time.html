@@ -1,0 +1,10 @@
+{% assign words_per_minute = 200 %}
+{% assign word_count = include.content | strip_html | number_of_words %}
+{% assign reading_time = word_count | divided_by: words_per_minute %}
+{% if reading_time == 0 %}
+  {% assign reading_time = 1 %}
+{% endif %}
+
+<span class="reading-time" style="color: #666; font-size: 0.9rem;">
+  📖 {{ reading_time }} min read
+</span>

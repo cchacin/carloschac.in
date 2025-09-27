@@ -1,0 +1,9 @@
+Contact: mailto:cchacin@gmail.com
+Canonical: https://carloschac.in/.well-known/security.txt
+Expires: 2026-12-31T23:59:59.000Z
+Policy: https://carloschac.in/security-policy
+Acknowledgments: https://carloschac.in/security-acknowledgments
+
+# Security Policy
+# Please report security vulnerabilities responsibly.
+# Do not publicly disclose issues until they have been addressed.

@@ -1,40 +1,139 @@
 ---
 layout: default
-title: Home
+title: Carlos Chacin - Software Engineering Experiences & Tutorials
+description: Java, Spring Boot, cloud technologies, and software engineering best practices. Learn from practical tutorials and real-world experiences.
 lang: en-us
 ---
 
-<div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h3 class="post-title">
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        {{ post.title }}
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Welcome to my Software Engineering Journey</h1>
+    <p class="hero-subtitle">
+      Sharing practical insights, tutorials, and real-world experiences in Java, Spring Boot,
+      cloud technologies, and modern software development practices.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/blog" class="btn btn-primary">📖 Latest Posts</a>
+      <a href="/about" class="btn btn-outline">👨‍💻 About Me</a>
+      <a href="https://www.youtube.com/@cchacin?sub_confirmation=1" class="btn btn-secondary" target="_blank" rel="noopener">
+        📺 YouTube Channel
       </a>
-    </h3>
+    </div>
 
-    {% include post_metadata.html page=post %}
-
-    {{ post.excerpt }}
-
-    <a href="{{ site.baseurl }}{{ post.url }}">Read more ...</a>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">{{ site.posts.size }}</span>
+        <span class="stat-label">Posts Published</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">{{ site.posts | map: 'tags' | join: ',' | split: ',' | uniq | size }}</span>
+        <span class="stat-label">Topics Covered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">{{ 'now' | date: '%Y' | minus: 2015 }}+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+    </div>
   </div>
-  {% endfor %}
-</div>
+</section>
 
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ site.baseurl }}/page{{paginator.next_page}}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}/">Newer</a>
-    {% else %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}/page{{paginator.previous_page}}">Newer</a>
-    {% endif %}
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
-</div>
+<!-- Recent Posts Preview -->
+<section class="recent-posts-preview">
+  <div class="preview-container">
+    <h2 class="section-title">📖 Latest From The Blog</h2>
+    <div class="posts-preview">
+      {% for post in site.posts limit:3 %}
+      <article class="post-preview">
+        <h3 class="preview-title">
+          <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        </h3>
+        <div class="preview-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%B %d, %Y" }}
+          </time>
+          {% if post.tags.size > 0 %}
+            <span class="preview-tags">
+              {% for tag in post.tags limit:2 %}
+                <span class="preview-tag">{{ tag }}</span>
+              {% endfor %}
+            </span>
+          {% endif %}
+        </div>
+        <p class="preview-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="preview-cta">
+      <a href="/blog" class="btn btn-primary">View All Posts →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Signup -->
+{% include newsletter_signup.html title="Join the Journey" description="Get notified when I publish new posts about software engineering, Java, cloud technologies, and developer productivity." %}
+
+<!-- Quick Navigation Section -->
+<section class="quick-nav-section">
+  <div class="quick-nav-container">
+    <h2 class="section-title">🔗 Explore More</h2>
+    <div class="nav-grid">
+      <a href="/projects" class="nav-card">
+        <div class="nav-icon">🚀</div>
+        <div class="nav-content">
+          <h3>Projects</h3>
+          <p>View my software engineering projects and demos</p>
+        </div>
+      </a>
+
+      <a href="/speaking" class="nav-card">
+        <div class="nav-icon">🎤</div>
+        <div class="nav-content">
+          <h3>Speaking</h3>
+          <p>Conference talks and presentations</p>
+        </div>
+      </a>
+
+      <a href="/contact" class="nav-card">
+        <div class="nav-icon">📧</div>
+        <div class="nav-content">
+          <h3>Contact</h3>
+          <p>Get in touch for collaboration opportunities</p>
+        </div>
+      </a>
+
+      <a href="/tags" class="nav-card">
+        <div class="nav-icon">🏷️</div>
+        <div class="nav-content">
+          <h3>All Tags</h3>
+          <p>Browse posts by topic and technology</p>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/@cchacin?sub_confirmation=1"
+         class="nav-card external"
+         target="_blank"
+         rel="noopener">
+        <div class="nav-icon">📺</div>
+        <div class="nav-content">
+          <h3>YouTube</h3>
+          <p>Video tutorials and technical content</p>
+        </div>
+      </a>
+
+      <a href="https://github.com/cchacin"
+         class="nav-card external"
+         target="_blank"
+         rel="noopener">
+        <div class="nav-icon">💻</div>
+        <div class="nav-content">
+          <h3>GitHub</h3>
+          <p>Open source projects and code examples</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include sidebar_script.html %}

@@ -2,13 +2,34 @@
 layout: default
 ---
 
-<h3>{{ page.title }}</h3>
-{% include post_metadata.html page=page %}
-<span class="post-date">{{ page.date | date_to_string }}</span>
+{% include breadcrumbs.html %}
 
-{% assign author = site.data.authors[page.author] %}
-<a rel="author" href="https://twitter.com/{{ author.twitter }}" title="{{ author.name }}">
-  {{ author.name }}
-</a>
-{{ content }}
-{% include related.html %}
+<article role="article" aria-labelledby="post-title" class="post-article">
+  <header class="post-header">
+    <h1 id="post-title" class="post-title">{{ page.title }}</h1>
+    {% include post_metadata.html page=page %}
+
+    {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  {% include post_series.html %}
+
+  {% include table_of_contents.html %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% include social_sharing.html %}
+
+  {% include comments.html %}
+
+  {% include author_bio.html compact=true %}
+
+  <footer class="post-footer">
+    {% include post_navigation.html %}
+    {% include related.html %}
+  </footer>
+</article>

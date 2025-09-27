@@ -1,0 +1,89 @@
+{% comment %}
+Breadcrumb navigation component
+{% endcomment %}
+
+{% assign breadcrumbs = page.url | split: '/' %}
+{% assign breadcrumb_url = '' %}
+
+<nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-list">
+    <!-- Home breadcrumb -->
+    <li class="breadcrumb-item">
+      <a href="{{ site.baseurl }}/" class="breadcrumb-link">
+        <span class="breadcrumb-icon">🏠</span>
+        <span class="breadcrumb-text">Home</span>
+      </a>
+    </li>
+
+    {% for crumb in breadcrumbs %}
+      {% unless crumb == '' %}
+        {% assign breadcrumb_url = breadcrumb_url | append: '/' | append: crumb %}
+
+        {% comment %} Skip the filename part for posts {% endcomment %}
+        {% unless forloop.last and page.layout == 'post' %}
+
+          {% comment %} Handle special sections {% endcomment %}
+          {% if crumb == 'tags' %}
+            <li class="breadcrumb-item">
+              <a href="{{ site.baseurl }}/tags" class="breadcrumb-link">
+                <span class="breadcrumb-text">Tags</span>
+              </a>
+            </li>
+          {% elsif crumb == 'projects' %}
+            <li class="breadcrumb-item">
+              <a href="{{ site.baseurl }}/projects" class="breadcrumb-link">
+                <span class="breadcrumb-text">Projects</span>
+              </a>
+            </li>
+          {% elsif crumb == 'speaking' %}
+            <li class="breadcrumb-item">
+              <a href="{{ site.baseurl }}/speaking" class="breadcrumb-link">
+                <span class="breadcrumb-text">Speaking</span>
+              </a>
+            </li>
+          {% elsif crumb == 'contact' %}
+            <li class="breadcrumb-item">
+              <a href="{{ site.baseurl }}/contact" class="breadcrumb-link">
+                <span class="breadcrumb-text">Contact</span>
+              </a>
+            </li>
+          {% elsif crumb == 'about' %}
+            <li class="breadcrumb-item">
+              <a href="{{ site.baseurl }}/about" class="breadcrumb-link">
+                <span class="breadcrumb-text">About</span>
+              </a>
+            </li>
+          {% comment %} Handle date segments for blog posts {% endcomment %}
+          {% elsif crumb contains '20' and crumb.size == 4 %}
+            <li class="breadcrumb-item">
+              <span class="breadcrumb-text">{{ crumb }}</span>
+            </li>
+          {% elsif crumb.size == 2 and crumb != 'md' and crumb contains '0' == false %}
+            {% comment %} Month number {% endcomment %}
+            {% assign month_names = 'January,February,March,April,May,June,July,August,September,October,November,December' | split: ',' %}
+            {% assign month_index = crumb | minus: 1 %}
+            <li class="breadcrumb-item">
+              <span class="breadcrumb-text">{{ month_names[month_index] }}</span>
+            </li>
+          {% elsif crumb.size == 2 and crumb != 'md' and crumb contains '0' %}
+            {% comment %} Day number with leading zero {% endcomment %}
+            <li class="breadcrumb-item">
+              <span class="breadcrumb-text">{{ crumb }}</span>
+            </li>
+          {% endif %}
+        {% endunless %}
+      {% endunless %}
+    {% endfor %}
+
+    {% comment %} Current page breadcrumb {% endcomment %}
+    {% if page.layout == 'post' %}
+      <li class="breadcrumb-item breadcrumb-current">
+        <span class="breadcrumb-text">{{ page.title | truncate: 50 }}</span>
+      </li>
+    {% elsif page.title and page.title != site.title %}
+      <li class="breadcrumb-item breadcrumb-current">
+        <span class="breadcrumb-text">{{ page.title }}</span>
+      </li>
+    {% endif %}
+  </ol>
+</nav>

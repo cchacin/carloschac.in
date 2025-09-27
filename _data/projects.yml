@@ -1,0 +1,76 @@
+# Projects data for easy content management
+featured_projects:
+  - title: "Spring Boot Microservices"
+    description: "A comprehensive microservices architecture demonstration using Spring Boot, featuring service discovery, configuration management, and distributed tracing."
+    tags:
+      - "Java"
+      - "Spring Boot"
+      - "Docker"
+      - "Kubernetes"
+    links:
+      - text: "🔗 View Project"
+        url: "#"
+        type: "primary"
+      - text: "📖 Documentation"
+        url: "#"
+        type: "outline"
+
+  - title: "Reactive REST API"
+    description: "High-performance reactive REST API built with Spring WebFlux, demonstrating non-blocking I/O patterns and reactive programming principles."
+    tags:
+      - "Java"
+      - "WebFlux"
+      - "MongoDB"
+      - "Redis"
+    links:
+      - text: "🔗 View Project"
+        url: "#"
+        type: "primary"
+      - text: "📖 Documentation"
+        url: "#"
+        type: "outline"
+
+  - title: "Cloud-Native Application"
+    description: "Complete cloud-native application deployment with infrastructure as code, automated testing, and comprehensive monitoring and observability."
+    tags:
+      - "AWS"
+      - "Terraform"
+      - "CI/CD"
+      - "Monitoring"
+    links:
+      - text: "🔗 View Project"
+        url: "#"
+        type: "primary"
+      - text: "📖 Documentation"
+        url: "#"
+        type: "outline"
+
+  - title: "Testing Framework Demo"
+    description: "Comprehensive testing strategy implementation showcasing unit, integration, and contract testing with modern Java testing frameworks and tools."
+    tags:
+      - "JUnit 5"
+      - "TestContainers"
+      - "Mockito"
+      - "Quality"
+    links:
+      - text: "🔗 View Project"
+        url: "#"
+        type: "primary"
+      - text: "📖 Documentation"
+        url: "#"
+        type: "outline"
+
+open_source:
+  - title: "Spring Framework"
+    description: "Contributing to Spring Boot documentation and community examples."
+  - title: "Testing Libraries"
+    description: "Improvements to testing frameworks and developer tooling."
+  - title: "Developer Tools"
+    description: "Creating utilities and tools for Java development workflows."
+
+cta:
+  title: "Interested in Collaboration?"
+  description: "I'm always open to discussing new projects, technical challenges, and opportunities to contribute to meaningful software solutions."
+  button:
+    text: "Get In Touch"
+    url: "/contact"

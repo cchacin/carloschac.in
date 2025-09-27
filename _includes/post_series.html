@@ -1,0 +1,71 @@
+{% comment %}
+Post Series component - displays navigation for post series
+Usage: Add 'series: "Series Name"' to post frontmatter
+{% endcomment %}
+
+{% if page.series %}
+  {% assign series_posts = site.posts | where: "series", page.series | sort: "date" %}
+  {% if series_posts.size > 1 %}
+
+    {% comment %} Find current post position in series {% endcomment %}
+    {% assign current_index = 0 %}
+    {% for post in series_posts %}
+      {% if post.url == page.url %}
+        {% assign current_index = forloop.index0 %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    <section class="post-series" aria-label="Post series navigation">
+      <div class="series-header">
+        <h3 class="series-title">
+          <span class="series-icon">📚</span>
+          Part {{ current_index | plus: 1 }} of {{ series_posts.size }} in "{{ page.series }}"
+        </h3>
+        <p class="series-description">This post is part of a {{ series_posts.size }}-part series on {{ page.series }}.</p>
+      </div>
+
+      <nav class="series-nav">
+        <ol class="series-list">
+          {% for post in series_posts %}
+            <li class="series-item {% if post.url == page.url %}series-current{% endif %}">
+              {% if post.url == page.url %}
+                <span class="series-current-marker">►</span>
+                <span class="series-current-title">{{ post.title }}</span>
+                <span class="series-current-label">(Current)</span>
+              {% else %}
+                <a href="{{ site.baseurl }}{{ post.url }}" class="series-link">
+                  <span class="series-number">{{ forloop.index }}.</span>
+                  <span class="series-link-title">{{ post.title }}</span>
+                  <time class="series-date" datetime="{{ post.date | date_to_xmlschema }}">
+                    {{ post.date | date: "%b %Y" }}
+                  </time>
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </nav>
+
+      {% comment %} Previous/Next navigation within series {% endcomment %}
+      <div class="series-navigation">
+        {% if current_index > 0 %}
+          {% assign prev_post = series_posts[current_index | minus: 1] %}
+          <a href="{{ site.baseurl }}{{ prev_post.url }}" class="series-nav-link series-prev">
+            <span class="nav-direction">← Previous in Series</span>
+            <span class="nav-title">{{ prev_post.title | truncate: 40 }}</span>
+          </a>
+        {% endif %}
+
+        {% assign next_index = current_index | plus: 1 %}
+        {% if next_index < series_posts.size %}
+          {% assign next_post = series_posts[next_index] %}
+          <a href="{{ site.baseurl }}{{ next_post.url }}" class="series-nav-link series-next">
+            <span class="nav-direction">Next in Series →</span>
+            <span class="nav-title">{{ next_post.title | truncate: 40 }}</span>
+          </a>
+        {% endif %}
+      </div>
+    </section>
+  {% endif %}
+{% endif %}

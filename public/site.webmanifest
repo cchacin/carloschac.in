@@ -1,0 +1,32 @@
+{
+  "name": "Carlos Chacin - Software Engineering",
+  "short_name": "Carlos Chacin",
+  "description": "Software Engineering Experiences & Tutorials",
+  "icons": [
+    {
+      "src": "/public/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/apple-touch-icon-precomposed.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0074d9",
+  "background_color": "#ffffff",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "orientation": "portrait"
+}

@@ -21,10 +21,14 @@ Recursos:
 - Código: https://github.com/cchacin/frameworkless-rest-api
 
 ### Parte 1
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-UVrMS43uEQ?si=93KAZ9J7EnZgu7Ty" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/-UVrMS43uEQ?si=93KAZ9J7EnZgu7Ty" title="Crea una REST API sin usar ningún Framework - Parte 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 ### Parte 2
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b8E3WhSWLhs?si=Qjca1rd11r73aeqr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/b8E3WhSWLhs?si=Qjca1rd11r73aeqr" title="Crea una REST API sin usar ningún Framework - Parte 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 ```
  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─

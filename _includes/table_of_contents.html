@@ -1,0 +1,179 @@
+{% comment %}
+Enhanced Table of Contents with automatic ID generation
+This approach uses JavaScript to add IDs to headings dynamically
+{% endcomment %}
+
+{% comment %} Extract headings for TOC generation {% endcomment %}
+{% assign toc_headings = content | split: '<h' %}
+{% assign toc_count = 0 %}
+{% assign toc_items = '' %}
+
+{% comment %} Build TOC items array {% endcomment %}
+{% for heading in toc_headings %}
+  {% if forloop.first %}
+    {% continue %}
+  {% endif %}
+
+  {% assign heading_level = heading | slice: 0, 1 | plus: 0 %}
+  {% if heading_level >= 2 and heading_level <= 4 %}
+    {% assign toc_count = toc_count | plus: 1 %}
+
+    {% comment %} Extract heading text {% endcomment %}
+    {% assign heading_parts = heading | split: '>' %}
+    {% assign heading_text = heading_parts[1] | split: '</h' | first | strip_html | strip %}
+    {% assign heading_id = heading_text | slugify %}
+
+    {% comment %} Build TOC item {% endcomment %}
+    {% capture toc_item %}
+      <li class="toc-item toc-level-{{ heading_level }}">
+        <a href="#{{ heading_id }}" class="toc-link" data-target="{{ heading_id }}">
+          {{ heading_text }}
+        </a>
+      </li>
+    {% endcapture %}
+
+    {% assign toc_items = toc_items | append: toc_item %}
+  {% endif %}
+{% endfor %}
+
+{% if toc_count >= 3 %}
+<aside class="table-of-contents" aria-label="Table of contents">
+  <h3 class="toc-title">📑 Table of Contents</h3>
+  <button class="toc-toggle" aria-expanded="false" aria-controls="toc-list">
+    <span class="toc-toggle-text">Show/Hide</span>
+    <span class="toc-toggle-icon">▼</span>
+  </button>
+
+  <nav class="toc-nav" id="toc-list">
+    <ol class="toc-list">
+      {{ toc_items }}
+    </ol>
+  </nav>
+</aside>
+
+<script>
+(function() {
+  // Function to create a slug from text
+  function createSlug(text) {
+    return text
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\-]+/g, '')
+      .replace(/\-\-+/g, '-')
+      .replace(/^-+/, '')
+      .replace(/-+$/, '');
+  }
+
+  // Add IDs to headings that don't have them
+  function addHeadingIds() {
+    const headings = document.querySelectorAll('h2, h3, h4');
+    const usedIds = new Set();
+
+    headings.forEach(heading => {
+      if (!heading.id) {
+        let baseId = createSlug(heading.textContent);
+        let finalId = baseId;
+        let counter = 1;
+
+        // Ensure unique IDs
+        while (usedIds.has(finalId) || document.getElementById(finalId)) {
+          finalId = `${baseId}-${counter}`;
+          counter++;
+        }
+
+        heading.id = finalId;
+        usedIds.add(finalId);
+      } else {
+        usedIds.add(heading.id);
+      }
+    });
+  }
+
+  // Initialize heading IDs
+  addHeadingIds();
+
+  // TOC functionality
+  const tocToggle = document.querySelector('.toc-toggle');
+  const tocList = document.querySelector('.toc-nav');
+  const tocIcon = document.querySelector('.toc-toggle-icon');
+
+  if (tocToggle && tocList) {
+    // Toggle functionality
+    tocToggle.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+      tocList.style.display = isExpanded ? 'none' : 'block';
+      tocIcon.textContent = isExpanded ? '▼' : '▲';
+    });
+
+    // Auto-collapse on mobile
+    if (window.innerWidth <= 768) {
+      tocList.style.display = 'none';
+    }
+
+    // Smooth scroll for TOC links
+    const tocLinks = document.querySelectorAll('.toc-link');
+    tocLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+          // Update URL without triggering navigation
+          if (history.pushState) {
+            history.pushState(null, null, '#' + targetId);
+          }
+
+          // Close TOC on mobile after navigation
+          if (window.innerWidth <= 768) {
+            tocList.style.display = 'none';
+            tocToggle.setAttribute('aria-expanded', 'false');
+            tocIcon.textContent = '▼';
+          }
+        }
+      });
+    });
+
+    // Highlight current section
+    function highlightCurrentSection() {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      const headings = document.querySelectorAll('h2[id], h3[id], h4[id]');
+      let currentHeading = null;
+
+      headings.forEach(heading => {
+        const rect = heading.getBoundingClientRect();
+        if (rect.top <= 100) {
+          currentHeading = heading;
+        }
+      });
+
+      tocLinks.forEach(link => {
+        link.classList.remove('active');
+        if (currentHeading && link.getAttribute('href') === '#' + currentHeading.id) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Throttle scroll events
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+      scrollTimeout = setTimeout(highlightCurrentSection, 100);
+    });
+
+    // Initial highlight
+    setTimeout(highlightCurrentSection, 100);
+  }
+})();
+</script>
+{% endif %}

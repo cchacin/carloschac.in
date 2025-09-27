@@ -1,0 +1,156 @@
+---
+layout: default
+title: Blog - Carlos Chacin
+description: Software engineering blog with tutorials, insights, and real-world experiences in Java, Spring Boot, cloud technologies, and modern development practices.
+lang: en-us
+permalink: /blog/
+---
+
+<!-- Content Discovery Toolbar -->
+<section class="content-toolbar">
+  <div class="toolbar-container">
+    <div class="toolbar-item">
+      <h3 class="toolbar-title">🔍 Quick Search</h3>
+      {% include search.html %}
+    </div>
+
+    <div class="toolbar-item">
+      <h3 class="toolbar-title">🏷️ Browse Topics</h3>
+      <div class="compact-tag-cloud">
+        {% assign sorted_tags = site.tags | sort %}
+        {% for tag in sorted_tags limit:8 %}
+          {% assign tag_name = tag[0] %}
+          {% assign post_count = tag[1] | size %}
+          <a href="/tags/#{{ tag_name | slugify }}" class="compact-tag">
+            {{ tag_name }} ({{ post_count }})
+          </a>
+        {% endfor %}
+        <a href="/tags" class="view-all-tags">View all →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Posts Section -->
+<section id="latest-posts" class="posts-section">
+  <h1 class="section-title">Latest Posts</h1>
+  <div class="posts">
+  {% assign posts_per_page = 5 %}
+  {% assign page_number = page.page | default: 1 %}
+  {% assign start_index = page_number | minus: 1 | times: posts_per_page %}
+  {% assign end_index = start_index | plus: posts_per_page %}
+
+  {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+  {% for post in sorted_posts limit: posts_per_page offset: start_index %}
+  <div class="post">
+    <h2 class="post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h2>
+
+    {% include post_metadata.html page=post %}
+
+    {{ post.excerpt }}
+
+    <a href="{{ site.baseurl }}{{ post.url }}">Read more ...</a>
+  </div>
+  {% endfor %}
+</div>
+
+{% assign total_posts = site.posts.size %}
+{% assign total_pages = total_posts | divided_by: posts_per_page %}
+{% assign remainder = total_posts | modulo: posts_per_page %}
+{% if remainder > 0 %}
+  {% assign total_pages = total_pages | plus: 1 %}
+{% endif %}
+
+<div class="pagination">
+  {% if page_number < total_pages %}
+    <a class="pagination-item older" href="{{ site.baseurl }}/blog/page{{ page_number | plus: 1 }}">Older</a>
+  {% else %}
+    <span class="pagination-item older">Older</span>
+  {% endif %}
+  {% if page_number > 1 %}
+    {% if page_number == 2 %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/blog/">Newer</a>
+    {% else %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/blog/page{{ page_number | minus: 1 }}">Newer</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">Newer</span>
+  {% endif %}
+</div>
+</section>
+
+<!-- Popular Posts Section -->
+<section class="popular-section">
+  <div class="popular-container">
+    <h2 class="section-title">🔥 Popular Posts</h2>
+    {% include popular_posts.html %}
+  </div>
+</section>
+
+<!-- Quick Navigation Section -->
+<section class="quick-nav-section">
+  <div class="quick-nav-container">
+    <h2 class="section-title">🔗 Explore More</h2>
+    <div class="nav-grid">
+      <a href="/projects" class="nav-card">
+        <div class="nav-icon">🚀</div>
+        <div class="nav-content">
+          <h3>Projects</h3>
+          <p>View my software engineering projects and demos</p>
+        </div>
+      </a>
+
+      <a href="/speaking" class="nav-card">
+        <div class="nav-icon">🎤</div>
+        <div class="nav-content">
+          <h3>Speaking</h3>
+          <p>Conference talks and presentations</p>
+        </div>
+      </a>
+
+      <a href="/contact" class="nav-card">
+        <div class="nav-icon">📧</div>
+        <div class="nav-content">
+          <h3>Contact</h3>
+          <p>Get in touch for collaboration opportunities</p>
+        </div>
+      </a>
+
+      <a href="/tags" class="nav-card">
+        <div class="nav-icon">🏷️</div>
+        <div class="nav-content">
+          <h3>All Tags</h3>
+          <p>Browse posts by topic and technology</p>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/@cchacin?sub_confirmation=1"
+         class="nav-card external"
+         target="_blank"
+         rel="noopener">
+        <div class="nav-icon">📺</div>
+        <div class="nav-content">
+          <h3>YouTube</h3>
+          <p>Video tutorials and technical content</p>
+        </div>
+      </a>
+
+      <a href="https://github.com/cchacin"
+         class="nav-card external"
+         target="_blank"
+         rel="noopener">
+        <div class="nav-icon">💻</div>
+        <div class="nav-content">
+          <h3>GitHub</h3>
+          <p>Open source projects and code examples</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include sidebar_script.html %}

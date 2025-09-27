@@ -1,0 +1,74 @@
+{% comment %}
+Popular Posts section - Shows posts with high engagement
+Since we don't have analytics data, we'll use a simple heuristic:
+- Recent posts (within last 6 months) get priority
+- Posts with more words/content get higher scores
+- Posts with tags get bonus points
+{% endcomment %}
+
+{% assign popular_posts = site.posts | sort: 'date' | reverse %}
+{% assign scored_posts = '' | split: '' %}
+
+{% for post in popular_posts limit: 20 %}
+  {% assign score = 0 %}
+  {% assign word_count = post.content | strip_html | number_of_words %}
+  {% assign days_old = 'now' | date: '%s' | minus: post.date | date: '%s' | divided_by: 86400 %}
+
+  {% comment %} Base score from word count {% endcomment %}
+  {% assign score = word_count | divided_by: 10 %}
+
+  {% comment %} Recency bonus - posts less than 180 days old get bonus {% endcomment %}
+  {% if days_old < 180 %}
+    {% assign recency_bonus = 180 | minus: days_old | divided_by: 10 %}
+    {% assign score = score | plus: recency_bonus %}
+  {% endif %}
+
+  {% comment %} Tag bonus {% endcomment %}
+  {% assign tag_bonus = post.tags.size | times: 5 %}
+  {% assign score = score | plus: tag_bonus %}
+
+  {% comment %} Create scored post object {% endcomment %}
+  {% assign scored_post = post.url | append: '|' | append: post.title | append: '|' | append: post.date | append: '|' | append: score | append: '|' | append: post.excerpt %}
+  {% assign scored_posts = scored_posts | push: scored_post %}
+{% endfor %}
+
+{% comment %} Sort by score (descending) {% endcomment %}
+{% assign sorted_posts = scored_posts | sort %}
+{% assign popular_count = 0 %}
+
+<div class="popular-posts">
+  <h3 class="popular-posts-title">🔥 Popular Posts</h3>
+  <div class="popular-posts-list">
+    {% for scored_post in sorted_posts reversed %}
+      {% if popular_count >= 4 %}
+        {% break %}
+      {% endif %}
+
+      {% assign post_data = scored_post | split: '|' %}
+      {% assign post_url = post_data[0] %}
+      {% assign post_title = post_data[1] %}
+      {% assign post_date = post_data[2] %}
+      {% assign post_score = post_data[3] %}
+      {% assign post_excerpt = post_data[4] %}
+
+      <article class="popular-post-item">
+        <h4 class="popular-post-title">
+          <a href="{{ site.baseurl }}{{ post_url }}">{{ post_title }}</a>
+        </h4>
+        <div class="popular-post-meta">
+          <time datetime="{{ post_date | date: '%Y-%m-%d' }}">{{ post_date | date: "%B %d, %Y" }}</time>
+          <span class="popular-score" title="Popularity score: {{ post_score }}">⭐ {{ post_score }}</span>
+        </div>
+        <p class="popular-post-excerpt">{{ post_excerpt | strip_html | truncatewords: 15 }}</p>
+      </article>
+
+      {% assign popular_count = popular_count | plus: 1 %}
+    {% endfor %}
+  </div>
+
+  {% if site.posts.size > 4 %}
+    <div class="popular-posts-footer">
+      <a href="{{ site.baseurl }}/" class="btn btn-outline">View All Posts</a>
+    </div>
+  {% endif %}
+</div>

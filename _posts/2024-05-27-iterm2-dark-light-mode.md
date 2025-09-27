@@ -14,7 +14,9 @@ tags: iterm2 macos tips-and-tricks terminal productivity
 
 This feature is not just about aesthetics; it's about comfort. Imagine your terminal always matching your Mac's light or dark mode, creating a seamless and visually pleasing experience. This enhances the visual appeal and reduces eye strain, making your terminal usage more comfortable.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Lrvdve8JNm0?si=Dlf-_rwaz8HZCn6X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/Lrvdve8JNm0?si=Dlf-_rwaz8HZCn6X" title="Auto-Switch iTerm2 Modes, Day & Night!" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 
 ## The Problem
 
