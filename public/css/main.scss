@@ -1499,6 +1499,116 @@ nav {
   }
 }
 
+// About & Contact Page Styles
+.about-section {
+  margin-bottom: var(--space-3xl);
+
+  .professional-summary {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    font-size: var(--font-size-lg);
+    color: var(--text-primary);
+  }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch; // Make cards same height
+    }
+  }
+
+  // Expertise cards using service-item styling
+  .expertise-card {
+    padding: var(--space-lg);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-base);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-color);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: var(--space-sm);
+        color: var(--text-secondary);
+        line-height: 1.6;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // Current focus with different styling
+  .current-focus {
+    background: var(--bg-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-base);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    h3 {
+      color: var(--text-primary);
+      margin-bottom: var(--space-md);
+      font-size: var(--font-size-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: var(--space-sm);
+        color: var(--text-secondary);
+        line-height: 1.6;
+        display: flex;
+        align-items: flex-start;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &::before {
+          content: "▸";
+          color: var(--primary-color);
+          font-weight: bold;
+          margin-right: var(--space-sm);
+          margin-top: 2px;
+          flex-shrink: 0;
+        }
+      }
+    }
+    // Full width for current focus section
+    @media (min-width: 768px) {
+      grid-column: 1 / -1; // Span both columns
+    }
+  }
+}
+
 // Contact page
 .contact-content {
   max-width: 900px;
