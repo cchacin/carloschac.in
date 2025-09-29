@@ -1,56 +1,30 @@
 ---
 layout: page
-title: About Carlos Chacin - Software Engineer & Content Creator
-description: Learn about Carlos Chacin, a software engineer specializing in Java, Spring Boot, and cloud technologies. Creator of educational content and open source projects.
+title: About Carlos Chacin - Senior Software Engineer | 20+ Years Experience
+description: Senior Software Engineer at Walmart Global Tech with 20+ years experience in Java, Spring Boot, microservices, and cloud technologies. Technical leader and open source contributor.
 lang: en-us
 ---
 
-### Hi there, I'm Carlos - a.k.a Talo 👋
+## Software Engineer | 20+ Years Experience
 
-## I'm a Husband, Father and Developer!
+### Professional Overview
 
-- 🔭 I’m currently working on the [MicroGen][microgen] project
-- 🌱 I’m currently learning Ruby, Kotlin and VIM
-- 👯 I’m looking to collaborate with other developers
-- 🤔 I’m looking for help with the [MicroGen][microgen] project
-- 💬 Ask me about: Unit Testing, TDD, Dependency Injection
-- 🥅 2020 Goals: Contribute more to Open Source projects
-- ⚡ Fun fact: I wanted to be a professional soccer player 🤣
+Senior Software Engineer with **20+ years** of experience building scalable applications and leading technical initiatives. Currently contributing to **Walmart Global Tech** in Seattle, driving innovation in enterprise-scale systems.
 
-### 📫 Connect with me:
+**Core Expertise:**
+- **Backend Development**: Java, Spring Boot, REST APIs, Microservices
+- **Cloud & DevOps**: AWS, Docker, Kubernetes, CI/CD pipelines
+- **Frontend**: JavaScript, TypeScript, React, modern web frameworks
+- **Architecture**: System design, scalable applications, API design
+- **Practices**: TDD, Unit Testing, Dependency Injection, Clean Code
 
-[<img align="left" alt="carloschac.in" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />][website]
-[<img align="left" alt="Carlos Chacin | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />][twitter]
-[<img align="left" alt="Carlos Chacin | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin]
-[<img align="left" alt="Carlos Chacin | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />][instagram]
+**Leadership & Impact:**
+- 📈 **Technical Leadership**: Mentoring teams and driving architectural decisions
+- 🚀 **Open Source**: Creator of [MicroGen][microgen] and contributor to enterprise projects
+- 🎯 **Content Creation**: Educational videos and technical content for developer community
+- 🌐 **Bilingual Professional**: Native Spanish and English proficiency
 
-<br />
-
-![Carlos Chacin's GitHub Statistics - showing repositories, commits, and coding activity](https://github-readme-stats.vercel.app/api?username=cchacin&show_icons=true&include_all_commits=true&count_private=true)
-
-[![Carlos Chacin's most used programming languages statistics](https://github-readme-stats.vercel.app/api/top-langs/?username=cchacin&layout=compact)](https://github.com/cchacin)
-
-### Popular Repositories
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=cchacin&repo=MicroGen)](https://github.com/cchacin/MicroGen)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=cchacin&repo=ImmutablesJsonb)](https://github.com/cchacin/ImmutablesJsonb)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=cchacin&repo=dotfiles)](https://github.com/cchacin/dotfiles)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=cchacin&repo=javafx-todoapp)](https://github.com/cchacin/javafx-todoapp)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=cchacin&repo=nomo)](https://github.com/cchacin/nomo)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=tomitribe&repo=beryllium&show_owner=true)](https://github.com/tomitribe/beryllium)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=tomitribe&repo=tomee-jaxrs-starter-project&show_owner=true)](https://github.com/tomitribe/tomee-jaxrs-starter-project)
-
-[![ReadMe Card](https://github-readme-stats.vercel.app/api/pin/?username=ArpNetworking&repo=metrics-client-java&show_owner=true)](https://github.com/ArpNetworking/metrics-client-java)
-
-
-[website]: https://carloschac.in
-[twitter]: https://twitter.com/CarlosChacin
-[instagram]: https://instagram.com/cchacin
-[linkedin]: https://www.linkedin.com/in/CarlosChacin
-[microgen]: https://github.com/cchacin/MicroGen
+**Current Focus:**
+- 🔭 Building next-generation microservices at Walmart Global Tech
+- 🌱 Exploring Kotlin, modern JVM languages, and cloud-native technologies
+- 💡 Creating educational content on Java, Spring Boot, and software engineering best practices

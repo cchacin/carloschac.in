@@ -38,7 +38,10 @@ lang: en-us
       <div class="services-grid">
         {% for service in site.data.contact.services %}
         <div class="service-item">
-          <h3>{{ service.icon }} {{ service.title }}</h3>
+          <div class="service-header">
+            <div class="service-icon">{{ service.icon }}</div>
+            <h3 class="service-title">{{ service.title }}</h3>
+          </div>
           <p>{{ service.description }}</p>
         </div>
         {% endfor %}

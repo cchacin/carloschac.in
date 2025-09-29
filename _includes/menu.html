@@ -12,7 +12,17 @@
           {% assign current_page = true %}
         {% elsif menu.url == "/" and page.url == "/index.html" %}
           {% assign current_page = true %}
-        {% elsif menu.text == "Blog" and page.layout == "post" %}
+        {% elsif menu.url == "/blog/" and (page.layout == "post" or page.url contains "/blog/") %}
+          {% assign current_page = true %}
+        {% elsif menu.url == "/projects" and page.url contains "/projects" %}
+          {% assign current_page = true %}
+        {% elsif menu.url == "/speaking" and page.url contains "/speaking" %}
+          {% assign current_page = true %}
+        {% elsif menu.url == "/videos" and page.url contains "/videos" %}
+          {% assign current_page = true %}
+        {% elsif menu.url == "/about" and page.url contains "/about" %}
+          {% assign current_page = true %}
+        {% elsif menu.url == "/contact" and page.url contains "/contact" %}
           {% assign current_page = true %}
         {% endif %}
 

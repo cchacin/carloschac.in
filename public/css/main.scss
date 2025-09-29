@@ -277,8 +277,14 @@ nav {
     margin: 0;
     padding: 0;
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 1024px) {
+      gap: var(--space-xs);
+    }
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -289,9 +295,9 @@ nav {
       a {
         display: inline-flex;
         align-items: center;
-        gap: var(--space-xs);
-        padding: var(--space-sm) var(--space-lg);
-        font-size: var(--font-size-base);
+        gap: var(--space-2xs);
+        padding: var(--space-sm) var(--space-md);
+        font-size: var(--font-size-sm);
         font-weight: 500;
         text-decoration: none;
         border: 2px solid var(--primary-color);
@@ -303,6 +309,17 @@ nav {
         color: var(--primary-color);
         white-space: nowrap;
         line-height: 1.2;
+
+        @media (min-width: 1200px) {
+          padding: var(--space-sm) var(--space-lg);
+          font-size: var(--font-size-base);
+          gap: var(--space-xs);
+        }
+
+        @media (max-width: 480px) {
+          font-size: var(--font-size-xs);
+          padding: var(--space-xs) var(--space-sm);
+        }
 
         &:hover, &:focus {
           background: var(--primary-color);
@@ -1093,12 +1110,23 @@ nav {
 
 // Posts section
 .posts-section {
-  max-width: 1200px;
-  margin: 0 auto var(--space-3xl);
-  padding: 0 var(--space-lg);
+  margin-bottom: var(--space-3xl);
+  width: 100%; // Explicit width for Firefox compatibility
+  -moz-box-sizing: border-box; // Firefox-specific box sizing
 
-  @media (min-width: 768px) {
-    padding: 0 var(--space-xl);
+  .posts-container {
+    max-width: 1200px !important; // Force max-width for Firefox
+    margin: 0 auto !important; // Force centering for Firefox
+    padding: 0 var(--space-lg) !important; // Force padding for Firefox
+    width: 100%; // Ensure full width in Firefox
+    box-sizing: border-box; // Consistent box model across browsers
+    -moz-box-sizing: border-box; // Firefox-specific box sizing
+    display: block; // Explicit display for Firefox
+    clear: both; // Clear any floats that might affect layout
+
+    @media (min-width: 768px) {
+      padding: 0 var(--space-xl) !important; // Force responsive padding for Firefox
+    }
   }
 }
 
@@ -1127,7 +1155,11 @@ nav {
 
 .posts {
   display: grid;
+  grid-template-columns: 1fr; // Explicit grid column for Firefox compatibility
   gap: var(--space-2xl);
+  width: 100%; // Explicit width for Firefox
+  -moz-box-sizing: border-box; // Firefox-specific box sizing
+  box-sizing: border-box; // Consistent box model
 }
 
 .post {
@@ -1137,6 +1169,13 @@ nav {
   padding: var(--space-xl);
   transition: var(--transition-base);
   box-shadow: var(--shadow-sm);
+  width: 100% !important; // Force width for Firefox
+  max-width: 100% !important; // Force max-width to prevent overflow in Firefox
+  box-sizing: border-box !important; // Force consistent box model
+  -moz-box-sizing: border-box; // Firefox-specific box sizing
+  margin: 0 !important; // Force reset margins that might cause centering issues
+  overflow-wrap: break-word; // Prevent content overflow in Firefox
+  position: relative; // Establish positioning context for Firefox
 
   &:hover {
     box-shadow: var(--shadow-md);
@@ -1514,6 +1553,34 @@ nav {
   padding: var(--space-lg);
   background: var(--bg-secondary);
   border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-base);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+  }
+
+  .service-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .service-icon {
+    font-size: var(--font-size-2xl);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .service-title {
+    color: var(--text-primary);
+    margin: 0;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+  }
 
   h3 {
     color: var(--text-primary);
@@ -1523,6 +1590,7 @@ nav {
   p {
     color: var(--text-secondary);
     line-height: 1.6;
+    margin: 0;
   }
 }
 

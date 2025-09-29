@@ -1,0 +1,303 @@
+# YouTube videos data for easy content management
+videos:
+  - title: "Domina los Tests de Arquitectura Java con ArchUnit en minutos"
+    youtube_id: "gp689Jwc1Go"
+    description: "Master Java architecture testing with ArchUnit in minutes. Learn how to enforce architectural rules and maintain code quality."
+    duration: "19:02"
+    date: "2024-02-28"
+    analytics:
+      views: 258
+      likes: 12
+      engagement: "4.7%"
+    tags:
+      - "Java"
+      - "ArchUnit"
+      - "Testing"
+      - "Architecture"
+    featured: true
+
+  - title: "My TOP IntelliJ Workflow Secrets Revealed"
+    youtube_id: "U9R4QMQCpcI"
+    description: "Discover powerful IntelliJ IDEA workflow tips and tricks that will boost your Java development productivity."
+    duration: "15:48"
+    date: "2024-02-28"
+    tags:
+      - "IntelliJ IDEA"
+      - "Productivity"
+      - "IDE"
+      - "Java"
+    featured: false
+
+  - title: "You Won't Believe How Easy Windows Resizing Can Be"
+    youtube_id: "DhIH4VYa2jQ"
+    description: "Learn simple and effective techniques for window management and resizing on macOS."
+    duration: "5:29"
+    date: "2024-01-28"
+    tags:
+      - "macOS"
+      - "Productivity"
+      - "Window Management"
+    featured: false
+
+  - title: "Advent of Code 2024 Java - Day 05 Print Queue"
+    youtube_id: "5O2ea_ylYVU"
+    description: "Solving Advent of Code 2024 Day 5 challenge using Java. Learn problem-solving techniques and clean code practices."
+    duration: "9:48"
+    date: "2023-12-05"
+    tags:
+      - "Java"
+      - "Advent of Code"
+      - "Problem Solving"
+      - "Algorithms"
+    featured: false
+
+  - title: "Advent of Code 2024 Java - Day 04 Ceres Search"
+    youtube_id: "kVFKwLP13wI"
+    description: "Advent of Code 2024 Day 4 solution in Java. Grid-based problem solving with efficient algorithms."
+    duration: "10:17"
+    date: "2023-12-04"
+    tags:
+      - "Java"
+      - "Advent of Code"
+      - "Algorithms"
+      - "Grid Processing"
+    featured: false
+
+  - title: "Advent of Code 2024 Java - Day 03 Mull It Over"
+    youtube_id: "E2YuJ3Uxg9o"
+    description: "Day 3 of Advent of Code 2024 solved with Java. String processing and pattern matching techniques."
+    duration: "9:03"
+    date: "2023-12-03"
+    tags:
+      - "Java"
+      - "Advent of Code"
+      - "String Processing"
+      - "Regex"
+    featured: false
+
+  - title: "Advent of Code 2024 Java - Day 02 Red-Nosed Reports"
+    youtube_id: "DNSDvS82osM"
+    description: "Advent of Code 2024 Day 2 challenge using Java. Data analysis and validation problem solving."
+    duration: "8:37"
+    date: "2023-12-02"
+    tags:
+      - "Java"
+      - "Advent of Code"
+      - "Data Processing"
+      - "Validation"
+    featured: false
+
+  - title: "Advent of Code 2024 Java - Day 01 Historian Hysteria"
+    youtube_id: "nLVnqRmFZRU"
+    description: "Starting Advent of Code 2024 with Java. Learn efficient problem-solving approaches for competitive programming."
+    duration: "6:11"
+    date: "2023-12-01"
+    tags:
+      - "Java"
+      - "Advent of Code"
+      - "Problem Solving"
+      - "Competitive Programming"
+    featured: false
+
+  - title: "Java API: ¿Frameworkless o Quarkus? ⚡ ¡El Test de VELOCIDAD Máxima!"
+    youtube_id: "j7zD7it61S0"
+    description: "Performance comparison between frameworkless Java APIs and Quarkus. Speed test and analysis."
+    duration: "7:55"
+    date: "2023-11-15"
+    tags:
+      - "Java"
+      - "Quarkus"
+      - "Performance"
+      - "Benchmark"
+    featured: false
+
+  - title: "¡Confianza Total! ✅ Testea tu API con JUnit5, AssertJ, Testcontainers"
+    youtube_id: "b8E3WhSWLhs"
+    description: "Complete guide to API testing with JUnit5, AssertJ, and Testcontainers. Build confidence in your Java applications."
+    duration: "36:29"
+    date: "2023-11-01"
+    tags:
+      - "Java"
+      - "Testing"
+      - "JUnit5"
+      - "AssertJ"
+      - "Testcontainers"
+    featured: false
+
+  - title: "¡Adiós Frameworks! 🚀 REST APIs con Servlets, JDBC & Postgres"
+    youtube_id: "-UVrMS43uEQ"
+    description: "Build REST APIs without frameworks using pure Java Servlets, JDBC, and PostgreSQL. Learn the fundamentals behind modern frameworks."
+    duration: "31:19"
+    date: "2023-11-01"
+    analytics:
+      views: 1300
+      likes: 58
+      engagement: "4.5%"
+    tags:
+      - "Java"
+      - "Servlets"
+      - "JDBC"
+      - "PostgreSQL"
+      - "Frameworkless"
+    featured: true
+
+  - title: "Boost Your Junit5 Tests by 30x with This Simple Trick"
+    youtube_id: "D-lGS6fg050"
+    description: "Learn a simple but powerful technique to dramatically improve your JUnit5 test performance and execution speed."
+    duration: "4:20"
+    date: "2023-08-15"
+    tags:
+      - "Java"
+      - "JUnit5"
+      - "Testing"
+      - "Performance"
+    featured: false
+
+  - title: "How To Make Java Code Super Easy To Test!"
+    youtube_id: "vjto_XPNtbA"
+    description: "Learn design patterns and techniques to make your Java code more testable and maintainable."
+    duration: "19:55"
+    date: "2023-08-01"
+    analytics:
+      views: 401
+      likes: 18
+      engagement: "4.5%"
+    tags:
+      - "Java"
+      - "Testing"
+      - "Clean Code"
+      - "Design Patterns"
+    featured: false
+
+  - title: "Unlock RAG SECRETS! 🚀 Supercharge Quarkus, LangChain4j, Ollama (Pt.2)"
+    youtube_id: "TbpQsOqtUis"
+    description: "Part 2 of the RAG series. Advanced techniques for enhancing your RAG system with Quarkus, LangChain4j, and Ollama."
+    duration: "6:55"
+    date: "2023-07-15"
+    tags:
+      - "RAG"
+      - "Quarkus"
+      - "LangChain4j"
+      - "Ollama"
+      - "AI"
+    featured: false
+
+  - title: "Easy RAG: Chat With YOUR Data! Quarkus, LangChain4j, Ollama (Pt.1)"
+    youtube_id: "GvS_sjnpVz0"
+    description: "Learn how to build a complete RAG (Retrieval Augmented Generation) system using Quarkus, LangChain4j, and Ollama. Chat with your own data locally!"
+    duration: "11:04"
+    date: "2023-07-01"
+    analytics:
+      views: 1400
+      likes: 45
+      engagement: "3.2%"
+    tags:
+      - "RAG"
+      - "Quarkus"
+      - "LangChain4j"
+      - "Ollama"
+      - "AI"
+    featured: true
+
+  - title: "Java Records vs. Kotlin Data Classes: SECRETS REVEALED!"
+    youtube_id: "KXEJ4tgNzwk"
+    description: "Deep dive into Java Records and Kotlin Data Classes, comparing their implementation differences at the bytecode level and understanding JVM optimizations."
+    duration: "4:35"
+    date: "2023-07-09"
+    tags:
+      - "Java"
+      - "Kotlin"
+      - "JVM"
+      - "Performance"
+    featured: false
+
+  - title: "🖥️️ Supercharge iTerm2's AI and Keep Your Data Private! (🦙️ Ollama Local Power 🔋️)"
+    youtube_id: "TnSJK-kSDvY"
+    description: "Enhance your terminal workflow with AI while keeping your data private using Ollama and iTerm2 integration."
+    duration: "3:51"
+    date: "2023-06-15"
+    analytics:
+      views: 1900
+      likes: 89
+      engagement: "4.7%"
+    tags:
+      - "iTerm2"
+      - "AI"
+      - "Ollama"
+      - "Privacy"
+      - "Terminal"
+    featured: true
+
+  - title: "🚀 Auto-Switch iTerm2 THEMES: Day🌞 & Night🌚 (Easy Setup!)"
+    youtube_id: "Lrvdve8JNm0"
+    description: "Automatically switch iTerm2 themes based on time of day. Easy setup for day and night themes with macOS integration."
+    duration: "2:05"
+    date: "2023-06-01"
+    tags:
+      - "iTerm2"
+      - "macOS"
+      - "Themes"
+      - "Automation"
+    featured: false
+
+  - title: "Java 17 y AWS Lambda: Guía Rápida de 2 Minutos"
+    youtube_id: "-eRRNdf644Q"
+    description: "Quick 2-minute guide to using Java 17 with AWS Lambda. Essential setup and configuration tips."
+    duration: "1:58"
+    date: "2022-11-15"
+    tags:
+      - "Java 17"
+      - "AWS Lambda"
+      - "Serverless"
+      - "Cloud"
+    featured: false
+
+  - title: "Master AWS Lambda with Java 17 in 2 Mins! 🤯☕️⚡️"
+    youtube_id: "VhxhmMqjEl8"
+    description: "Master the essentials of AWS Lambda with Java 17 in just 2 minutes. Quick start guide for serverless Java development."
+    duration: "2:00"
+    date: "2022-11-01"
+    tags:
+      - "Java 17"
+      - "AWS Lambda"
+      - "Serverless"
+      - "Quick Start"
+    featured: false
+
+topics:
+  - icon: "☕"
+    title: "Java Development"
+    description: "Modern Java features, best practices, and framework deep-dives."
+
+  - icon: "🏗️"
+    title: "Software Architecture"
+    description: "Microservices, design patterns, and scalable system design."
+
+  - icon: "⚡"
+    title: "Performance"
+    description: "Application optimization, profiling, and performance engineering."
+
+  - icon: "🧪"
+    title: "Testing"
+    description: "Testing strategies, frameworks, and quality assurance practices."
+
+  - icon: "🐳"
+    title: "DevOps"
+    description: "Containerization, CI/CD, and deployment strategies."
+
+  - icon: "🌐"
+    title: "Web APIs"
+    description: "REST, GraphQL, and modern API design patterns."
+
+cta:
+  title: "Subscribe to My Channel"
+  description: "Get the latest videos on Java development, software architecture, and programming best practices delivered to your inbox."
+  buttons:
+    - text: "📺 Subscribe on YouTube"
+      url: "https://www.youtube.com/@cchacin?sub_confirmation=1"
+      type: "primary"
+      external: true
+    - text: "🔔 Turn on Notifications"
+      url: "https://www.youtube.com/@cchacin"
+      type: "secondary"
+      external: true

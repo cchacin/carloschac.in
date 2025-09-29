@@ -1,4 +1,4 @@
-- text: 🏠 Home
+- text: 🏠
   url: /
 - text: 📖 Blog
   url: /blog/
@@ -6,8 +6,10 @@
   url: /about
 - text: 🚀 Projects
   url: /projects
-- text: 🎤 Speaking
+- text: 🎤 Talks
   url: /speaking
+- text: 📺 Videos
+  url: /videos
 - text: 📧 Contact
   url: /contact
 
