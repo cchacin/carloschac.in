@@ -7,16 +7,21 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <header role="banner" class="site-header">
     <div class="container">
-      <div class="header-brand">
-        <div class="site-title">
-          <a href="{{ site.url }}" class="brand-link">
-            <span class="brand-icon">👨‍💻</span>
-            <span class="brand-text">{{ site.title }}</span>
-          </a>
+      <div class="header-content">
+        <div class="header-brand">
+          <div class="site-title">
+            <a href="{{ site.url }}" class="brand-link">
+              <span class="brand-icon">👨‍💻</span>
+              <span class="brand-text">{{ site.title }}</span>
+            </a>
+          </div>
+          <div class="site-taglines">
+            <p class="youtube-link">Youtube Channel: <a href="https://www.youtube.com/@cchacin?sub_confirmation=1" target="_blank" rel="noopener">@cchacin</a></p>
+            <p class="site-tagline">{{ site.tagline }}</p>
+          </div>
         </div>
-        <div class="site-taglines">
-          <p class="youtube-link">Youtube Channel: <a href="https://www.youtube.com/@cchacin?sub_confirmation=1" target="_blank" rel="noopener">@cchacin</a></p>
-          <p class="site-tagline">{{ site.tagline }}</p>
+        <div class="header-actions">
+          {% include theme-switcher.html %}
         </div>
       </div>
       {% include menu.html %}

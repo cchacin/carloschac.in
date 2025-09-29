@@ -7,9 +7,9 @@ permalink: 404.html
 
 <div class="page">
   <div style="text-align: center; padding: 2rem 0;">
-    <h1 style="font-size: 3rem; margin-bottom: 1rem; color: #e74c3c;">404</h1>
+    <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--ctp-red);">404</h1>
     <h2 style="margin-bottom: 2rem;">Page Not Found</h2>
-    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #666;">
+    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-secondary);">
       Sorry, the page you're looking for doesn't exist or has been moved.
     </p>
 
@@ -26,12 +26,12 @@ permalink: 404.html
       <h3>Recent Posts:</h3>
       <ul style="list-style: none; padding: 0;">
         {% for post in site.posts limit:5 %}
-        <li style="margin-bottom: 0.8rem; padding: 0.5rem; border-bottom: 1px solid #eee;">
-          <a href="{{ site.baseurl }}{{ post.url }}" style="color: #0074d9; font-weight: 500;">
+        <li style="margin-bottom: 0.8rem; padding: 0.5rem; border-bottom: 1px solid var(--border-color);">
+          <a href="{{ site.baseurl }}{{ post.url }}" style="color: var(--primary-color); font-weight: 500;">
             {{ post.title }}
           </a>
           <br>
-          <small style="color: #666;">{{ post.date | date: "%B %d, %Y" }}</small>
+          <small style="color: var(--text-secondary);">{{ post.date | date: "%B %d, %Y" }}</small>
         </li>
         {% endfor %}
       </ul>

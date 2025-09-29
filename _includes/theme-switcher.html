@@ -1,0 +1,183 @@
+<button
+  class="theme-toggle"
+  id="theme-toggle"
+  aria-label="Switch theme (currently Auto)"
+  title="Switch theme (currently Auto)"
+>
+  <span id="theme-icon">💻</span>
+</button>
+
+<script>
+(function() {
+  'use strict';
+
+  // Theme management
+  const STORAGE_KEY = 'theme-preference';
+  const THEME_CYCLE = ['auto', 'light', 'dark']; // Cycling order: Auto → Light → Dark → Auto
+  const THEMES = {
+    light: { icon: '☀️', label: 'Light' },
+    dark: { icon: '🌙', label: 'Dark' },
+    auto: { icon: '💻', label: 'Auto' }
+  };
+
+  // DOM elements
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+
+  if (!themeToggle || !themeIcon) {
+    console.warn('Theme switcher elements not found');
+    return;
+  }
+
+  // Get current theme preference
+  function getThemePreference() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored || 'auto';
+  }
+
+  // Save theme preference
+  function saveThemePreference(theme) {
+    localStorage.setItem(STORAGE_KEY, theme);
+  }
+
+  // Get effective theme (resolves 'auto' to actual theme)
+  function getEffectiveTheme(preference = getThemePreference()) {
+    if (preference === 'auto') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return preference;
+  }
+
+  // Apply theme to document
+  function applyTheme(theme, skipTransition = false) {
+    const effectiveTheme = getEffectiveTheme(theme);
+    const root = document.documentElement;
+
+    if (skipTransition) {
+      root.classList.add('theme-transitioning');
+    }
+
+    // Remove existing theme attributes
+    root.removeAttribute('data-theme');
+
+    // Apply new theme - always set data-theme attribute
+    if (effectiveTheme === 'dark') {
+      root.setAttribute('data-theme', 'dark');
+    } else {
+      root.setAttribute('data-theme', 'light');
+    }
+
+    if (skipTransition) {
+      // Force reflow and remove transition class
+      root.offsetHeight;
+      requestAnimationFrame(() => {
+        root.classList.remove('theme-transitioning');
+      });
+    }
+  }
+
+  // Get next theme in cycle
+  function getNextTheme(currentTheme) {
+    const currentIndex = THEME_CYCLE.indexOf(currentTheme);
+    const nextIndex = (currentIndex + 1) % THEME_CYCLE.length;
+    return THEME_CYCLE[nextIndex];
+  }
+
+  // Update UI to reflect current theme
+  function updateUI(preference = getThemePreference()) {
+    const themeConfig = THEMES[preference];
+    if (!themeConfig) return;
+
+    // Update toggle button icon and labels
+    themeIcon.textContent = themeConfig.icon;
+    const label = `Switch theme (currently ${themeConfig.label})`;
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('title', label);
+  }
+
+  // Handle theme cycling
+  function cycleTheme() {
+    const currentTheme = getThemePreference();
+    const nextTheme = getNextTheme(currentTheme);
+
+    saveThemePreference(nextTheme);
+    applyTheme(nextTheme);
+    updateUI(nextTheme);
+
+    // Optional: Show a brief notification (like vanilla-di.com)
+    showThemeChangeNotification(nextTheme);
+  }
+
+  // Show theme change notification
+  function showThemeChangeNotification(theme) {
+    const themeConfig = THEMES[theme];
+    if (!themeConfig) return;
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.textContent = `Theme changed to ${themeConfig.label}`;
+    notification.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px var(--shadow-color);
+      z-index: 1000;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    `;
+
+    document.body.appendChild(notification);
+
+    // Animate in
+    requestAnimationFrame(() => {
+      notification.style.opacity = '1';
+    });
+
+    // Remove after 2 seconds
+    setTimeout(() => {
+      notification.style.opacity = '0';
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 200);
+    }, 2000);
+  }
+
+  // Initialize theme system
+  function initTheme() {
+    const preference = getThemePreference();
+    applyTheme(preference, true);
+    updateUI(preference);
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', () => {
+      if (getThemePreference() === 'auto') {
+        applyTheme('auto');
+      }
+    });
+  }
+
+  // Event listeners
+  themeToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    cycleTheme();
+  });
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTheme);
+  } else {
+    initTheme();
+  }
+})();
+</script>

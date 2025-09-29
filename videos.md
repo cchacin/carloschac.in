@@ -27,14 +27,14 @@ description: "Educational content on Java development, software architecture, an
 
 .featured-section {
   padding: 4rem 0;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .featured-section h2 {
   text-align: center;
   margin-bottom: 3rem;
   font-size: 2.5rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .video-grid {
@@ -45,17 +45,17 @@ description: "Educational content on Java development, software architecture, an
 }
 
 .video-card {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-color);
 }
 
 .video-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px var(--shadow-color-hover);
 }
 
 .video-thumbnail {
@@ -93,7 +93,7 @@ description: "Educational content on Java development, software architecture, an
 }
 
 .play-button:hover {
-  background: white;
+  background: var(--bg-primary);
   transform: translate(-50%, -50%) scale(1.1);
 }
 
@@ -101,7 +101,7 @@ description: "Educational content on Java development, software architecture, an
   content: '';
   width: 0;
   height: 0;
-  border-left: 15px solid #333;
+  border-left: 15px solid var(--text-primary);
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   margin-left: 3px;
@@ -112,7 +112,7 @@ description: "Educational content on Java development, software architecture, an
   bottom: 8px;
   right: 8px;
   background: rgba(0, 0, 0, 0.8);
-  color: white;
+  color: var(--text-inverse);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -123,8 +123,8 @@ description: "Educational content on Java development, software architecture, an
   position: absolute;
   top: 8px;
   left: 8px;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-  color: white;
+  background: linear-gradient(135deg, var(--ctp-red), var(--ctp-peach));
+  color: var(--text-inverse);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.7rem;
@@ -140,12 +140,12 @@ description: "Educational content on Java development, software architecture, an
   margin: 0 0 0.5rem 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   line-height: 1.4;
 }
 
 .video-content p {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 1rem;
@@ -158,8 +158,8 @@ description: "Educational content on Java development, software architecture, an
 }
 
 .tag {
-  background: #f1f3f4;
-  color: #5f6368;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-size: 0.75rem;
@@ -172,9 +172,9 @@ description: "Educational content on Java development, software architecture, an
   gap: 1rem;
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid #f1f3f4;
+  border-top: 1px solid var(--border-color);
   font-size: 0.8rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .analytics-item {
@@ -200,19 +200,19 @@ description: "Educational content on Java development, software architecture, an
   text-align: center;
   margin-bottom: 3rem;
   font-size: 2.5rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .topics-section {
   padding: 4rem 0;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .topics-section h2 {
   text-align: center;
   margin-bottom: 3rem;
   font-size: 2.5rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .topics-grid {
@@ -224,9 +224,9 @@ description: "Educational content on Java development, software architecture, an
 .topic-card {
   text-align: center;
   padding: 2rem 1rem;
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--shadow-color);
   transition: transform 0.3s ease;
 }
 
@@ -241,19 +241,19 @@ description: "Educational content on Java development, software architecture, an
 
 .topic-card h3 {
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .topic-card p {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .cta-section {
   padding: 4rem 0;
   text-align: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--ctp-blue), var(--ctp-mauve));
+  color: var(--text-inverse);
 }
 
 .cta-section h2 {
@@ -288,24 +288,24 @@ description: "Educational content on Java development, software architecture, an
 }
 
 .btn-primary {
-  background: white;
-  color: #667eea;
+  background: var(--bg-primary);
+  color: var(--ctp-blue);
 }
 
 .btn-primary:hover {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   transform: translateY(-2px);
 }
 
 .btn-secondary {
   background: transparent;
-  color: white;
-  border-color: white;
+  color: var(--text-inverse);
+  border-color: var(--text-inverse);
 }
 
 .btn-secondary:hover {
-  background: white;
-  color: #667eea;
+  background: var(--bg-primary);
+  color: var(--ctp-blue);
 }
 
 @media (max-width: 768px) {
